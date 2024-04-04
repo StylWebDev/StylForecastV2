@@ -1,0 +1,62 @@
+<script setup>
+
+import {onMounted, onUnmounted , ref, watchEffect} from "vue";
+import StracturesFlex from "../../components/StracturesFlex.vue";
+import {useConfigureStore} from "@/stores/configure.js";
+import {useRoute} from "vue-router";
+import {useWeather} from "@/composables/weather.js";
+import Error from "../../components/Static/Error.vue";
+import DailyAnalysisInSummary from "@/components/weather/daily/DailyAnalysisInSummary.vue";
+import PerTheeHoursAnalysis from "@/components/weather/daily/PerTheeHoursAnalysis.vue";
+import DailyCharts from "@/components/weather/daily/DailyCharts.vue";
+
+
+const route = useRoute();
+const day = ref(route.params.days);
+const windowHeight = ref(window.innerHeight);
+const configureStore = useConfigureStore();
+
+
+const {getWeather} = useWeather();
+const weather = ref(null);
+
+watchEffect(async () => {
+  weather.value = await getWeather(route.params.city, "daily");
+})
+
+onMounted(() => {
+    window.addEventListener('resize', onResize);
+});
+
+onUnmounted(() =>{
+  window.removeEventListener('resize',onResize);
+});
+
+const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = ref(false);
+</script>
+
+<template class="">
+  <div>
+    <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="configureStore.themes[configureStore.themeNum].text" class=" font-bold max-md:pb-16" :column="true" items="center">
+
+      <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{( weather==null) ? error :  weather.resolvedAddress}}</h2>
+      <div class="fadeIn">
+        <p class="mt-3 font-semibold text-2xl " :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t(`days.day${new Date(weather.days[day].data.datetime).getDay()}`)}} {{new Date( weather.days[day].data.datetime).getUTCDate()}}/{{new Date( weather.days[day].data.datetime).getMonth() + 1}}/{{new Date( weather.days[day].data.datetime).getFullYear()}}</p>
+      </div>
+
+      <DailyAnalysisInSummary :windowHeight="windowHeight" :day="parseInt(day)" :weather="weather"/>
+
+      <PerTheeHoursAnalysis :day="parseInt(day)" :weather="weather"/>
+
+      <h3 :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class="cursor-default text-2xl text-center text-shadow  mt-10 max-sm:mt-16 align-middle capitalize sm:text-xl md:text-2xl lg:text-3xl min-[1920px]:text-4xl fadeIn">{{$t('forecastDetails.charts')}}</h3>
+      <DailyCharts :day="parseInt(day)" :weather="weather"/>
+    </StracturesFlex>
+    <Error v-show="configureStore.open===false" v-if="weather!=null && weather.hasOwnProperty(`Error`)" />
+  </div>
+
+
+</template>
+
+<style scoped>
+
+</style>
