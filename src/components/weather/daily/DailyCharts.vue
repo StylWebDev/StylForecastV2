@@ -26,7 +26,7 @@ const props = defineProps({
 
 <template>
   <div class="grid lg:grid-cols-2 md:grid-cols-2 2xl:grid-cols-3 justify-center justify-items-center items-center mt-10 fadeIn">
-    <StracturesFlex v-for="(value, index) in chartLabels" :key="index" :column="true" items="center" justify="center" :class="(index===2) ? `md:col-span-2 min-[1525px]:col-span-1` : ``">
+    <StracturesFlex v-for="(value, index) in chartLabels" :key="index" :column="true" items="center" justify="center" class="text-center" :class="(index===2) ? `md:col-span-2 min-[1525px]:col-span-1` : ``">
       <h5>{{$t(`apexCharts.${value.name}`)}}</h5>
       <apexchart :type="(index===1) ? `bar` : `area`" :class="configureStore.themes[configureStore.themeNum].charts" :options="charts[`${value.name}Chart`].options"
                  :series="[  { name: (index===2 && $i18n.locale===`en`) ? $t(`apexCharts.${value.name}`).slice(9,16) : $t(`apexCharts.${value.name}`).slice(0,11),

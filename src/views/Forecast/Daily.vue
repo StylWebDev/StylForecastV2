@@ -44,10 +44,8 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
 
       <DailyAnalysisInSummary :windowHeight="windowHeight" :day="parseInt(day)" :weather="weather"/>
 
-      <PerTheeHoursAnalysis :day="parseInt(day)" :weather="weather"/>
+      <PerTheeHoursAnalysis :day="parseInt(day)" :weather="weather" class="mb-10"/>
 
-      <h3 :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class="cursor-default text-2xl text-center text-shadow  mt-10 max-sm:mt-16 align-middle capitalize sm:text-xl md:text-2xl lg:text-3xl min-[1920px]:text-4xl fadeIn">{{$t('forecastDetails.charts')}}</h3>
-      <DailyCharts :day="parseInt(day)" :weather="weather"/>
     </StracturesFlex>
     <Error v-show="configureStore.open===false" v-if="weather!=null && weather.hasOwnProperty(`Error`)" />
   </div>

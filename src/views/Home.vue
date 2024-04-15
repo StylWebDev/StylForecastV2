@@ -31,13 +31,13 @@ watchEffect(async () => {
   <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" leave-active-class="transition-opacity duration-500 ease-out" appear appear-active-class="transition-opacity duration-1000 ease-in">
     <div class="mt-4">
       <StracturesFlex :class="configureStore.themes[configureStore.themeNum].text" class=" text-center font-bold max-md:pb-12 bg-transparent" :column="true" items="center">
-        <div class=" cursor-default animate-pulse">
+        <div class=" cursor-default">
           <Icon :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class="inline max-sm:hidden " width="110" icon="ri:meteor-fill"/>
           <Icon :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class="hidden max-sm:inline" width="80" icon="ri:meteor-fill"/>
-          <h1 class="transition ease-in duration-500 align-middle inline max-sm:text-4xl sm:text-6xl md:text-6xl lg:text-7xl " :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t("home.title")}}</h1>
+          <h1 class="transition ease-in duration-500 align-middle inline max-sm:text-4xl sm:text-6xl md:text-6xl lg:text-7xl animate-pulse" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t("home.title")}}</h1>
         </div>
         <StracturesFlex class=" mt-8 cursor-default"  :row="true" justify="center" items="center">
-          <p class="rainbow text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.slogan")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
+          <p class="text-amber-400 text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.slogan")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
         </StracturesFlex>
         <StracturesFlex class="apexFade max-sm:mt-14 mt-20 cursor-default"  :row="true" justify="center" items="center">
           <h2 :class="configureStore.trans" class=" align-middle sm:text-lg md:text-xl lg:text-2xl">{{$t("home.purpose")}} !</h2>
