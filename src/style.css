@@ -8,6 +8,10 @@
     font-weight: 400;
 }
 
+input, textarea {
+    min-width: 0;
+}
+
 body{
     background: fixed;
     background-size: 100% 100%;
@@ -168,10 +172,6 @@ body{
     animation: fadeInNav 5s ease 0s 1;
 }
 
-.apexFade{
-    animation: fadeInNav 3s ease-in 0s 1;
-}
-
 @keyframes fadeInNav {
     0% {
         opacity: 0;
@@ -190,41 +190,15 @@ body{
     }
 }
 
-.fadeIcons{
-    animation: fadeInIcons 10s ease 0s infinite;
-}
-
-@keyframes fadeInIcons {
-    from {
-
-        opacity: 0;
-    }
-    20% {
-
-        opacity: 1;
-    }
-
-    80%{
-        opacity: 1;
-    }
-
-    to{
-        opacity: 0;
-    }
-}
-
-.mobile::-webkit-scrollbar{
-    height: 7px;
-}
 
 @media only screen and (max-width: 767px){
-    .mobile::-webkit-scrollbar-thumb{
+    ::-webkit-scrollbar-thumb{
         visibility: hidden;
     }
 }
 
 @media only screen and (min-width: 768px){
-    .mobile::-webkit-scrollbar-thumb{
+    ::-webkit-scrollbar-thumb{
         margin-top: 7px;
         visibility: visible;
         background: #FFFFFF35;

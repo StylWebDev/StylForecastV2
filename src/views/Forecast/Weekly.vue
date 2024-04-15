@@ -1,10 +1,10 @@
 <script setup>
-import {computed, ref, watch, watchEffect} from "vue";import StracturesFlex from "../../components/StracturesFlex.vue";import {Icon} from "@iconify/vue";import {useConfigureStore} from "@/stores/configure.js";import {useRoute} from "vue-router";import {useWeather} from "../../composables/weather.js";
+import {computed, ref, watchEffect} from "vue";import {useConfigureStore} from "@/stores/configure.js";
+import {useRoute} from "vue-router";import {useWeather} from "../../composables/weather.js";
 import Error from "../../components/Static/Error.vue";
 import CurrentAnalysisInSummary from "@/components/weather/weekly/CurrentAnalysisInSummary.vue";
 import WeeklyAnalysisInSummary from "@/components/weather/weekly/WeeklyAnalysisInSummary.vue";
 import ProvidersWeeklyWeather from "@/components/weather/weekly/ProvidersWeeklyWeather.vue";
-import SearchCity from "@/components/Static/SearchCity.vue";
 
 const {getWeather} = useWeather();
 const configureStore = useConfigureStore();
@@ -21,12 +21,12 @@ const weeklyWeather = computed( () => {
     return  weather.value.days.filter((value,index) => (index>0 && index<5))
 })
 
+
 </script>
 
 <template>
   <div>
-    <SearchCity :cityName="route.params.city"/>
-    <div v-show="configureStore.open===false" v-if="weather!=null && !weather.hasOwnProperty(`Error`)"  class="font-bold max-md:pb-16 z-10 fadeIn" :class="configureStore.themes[configureStore.themeNum].text" :column="true" items="center">
+    <div v-if="weather!=null && !weather.hasOwnProperty(`Error`)"  class="font-bold max-md:pb-16 z-10 fadeIn" :class="configureStore.themes[configureStore.themeNum].text" :column="true" items="center">
 
       <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">

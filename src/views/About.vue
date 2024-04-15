@@ -4,7 +4,6 @@ import StracturesFlex from "../components/StracturesFlex.vue";
 import Footer from "../components/Static/Footer.vue";
 import {useI18n} from "vue-i18n";
 const {t} = useI18n()
-
 const configureStore = useConfigureStore()
 
 
@@ -21,9 +20,6 @@ const configureStore = useConfigureStore()
         <li v-for="index in 4" :key="index" :class="[configureStore.themes[configureStore.themeNum].text_trans,configureStore.trans]" class="md:text-xl max-md:text-base md:font-semibold">{{ $t(`about.purposes${index}`)}}</li>
       </ul>
     </StracturesFlex>
-  <Footer class="absolute"/>
+    <Footer class="absolute"/>
   </div>
 </template>
-<style scoped>
-
-</style>

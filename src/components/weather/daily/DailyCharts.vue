@@ -5,7 +5,6 @@ import {useConfigureStore} from "@/stores/configure.js";
 import {useChartStore} from "@/stores/chart.js";
 import {ref} from "vue";
 
-
 const charts = useChartStore();
 const configureStore = useConfigureStore();
 const chartLabels = ref([

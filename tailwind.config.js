@@ -17,6 +17,24 @@ module.exports = {content: [
         DEFAULT: '0 2px 4px var(--tw-shadow-color)',
         lg: '0 8px 16px var(--tw-shadow-color)',
       },
+      colors: {
+        eggplant: {
+          500: "#615878",
+          600: "#534C6C",
+          700: "#5A5973",
+          800: "#373555",
+          900: "#313050",
+          950: "#1D1D30",
+        },
+        weather: {
+          500: "#D8EEEE",
+          600: "#8FC9D7",
+          700: "#23789D",
+          800: "#337A9E",
+          900: "#005986",
+          950: "#00354A",
+        }
+      }
     },
   },
   plugins: [

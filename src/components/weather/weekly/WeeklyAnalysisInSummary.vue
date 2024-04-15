@@ -1,13 +1,11 @@
 <script setup>
-
 import StracturesFlex from "@/components/StracturesFlex.vue";
 import {Icon} from "@iconify/vue";
 import {useConfigureStore} from "@/stores/configure.js";
-import {computed} from "vue";
 
 const configureStore = useConfigureStore();
 
-const props = defineProps({
+defineProps({
   weather: {
     type: Object,
     required: true,
@@ -17,7 +15,6 @@ const props = defineProps({
     required: true,
   }
 });
-
 </script>
 
 <template>
@@ -28,7 +25,7 @@ const props = defineProps({
         <div><Icon class="inline max-sm:hidden min-[1921px]:hidden" width="160" :icon="configureStore.icons[value.data.icon]"/><Icon class="hidden max-sm:inline" width="120" :icon="configureStore.icons[value.data.icon]"/> <Icon class="inline max-[1920px]:hidden" width="200" :icon="configureStore.icons[value.data.icon]"/></div>
         <div>
           <StracturesFlex class="space-x-2 items-center" :row="true">
-            <h3 class="text-2xl min-[1920px]:text-3xl align-middle">{{value.data.temp}}°C</h3>
+            <h3 class="text-2xl min-[1920px]:text-3xl align-middle">{{value.data.tempmax}}°C</h3>
           </StracturesFlex>
           <h3 class="capitalize">{{ (value.data.snow>0) ? (value.data.snow<=0.5) ? $t(`conditions.Snow, Partially cloudy`) : $t(`conditions.Snow, Overcast`) : $t(`conditions.${value.data.conditions}`)}}</h3>
           <StracturesFlex :row="true" items="center" class="max-sm:text-sm max-[300px]:items-end">
@@ -45,7 +42,3 @@ const props = defineProps({
     </StracturesFlex>
   </div>
 </template>
-
-<style scoped>
-
-</style>

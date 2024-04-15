@@ -23,10 +23,6 @@ const props = defineProps({
   }
 });
 
-
-console.log(props.weather)
-
-
 </script>
 
 <template>

@@ -14,7 +14,3 @@ const configureStore = useConfigureStore()
     <RouterLink to="/" :class="[configureStore.themes[configureStore.themeNum].btn, configureStore.trans]" class="capitalize rounded-full border-2 px-3 text-xl bg-neutral-900 bg-opacity-30">{{($i18n.locale === `en`) ? `Back to home` : `Πίσω στη αρχική` }}</RouterLink>
   </StracturesFlex>
 </template>
-
-<style scoped>
-
-</style>

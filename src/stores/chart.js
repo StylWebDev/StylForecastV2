@@ -24,7 +24,7 @@ export const useChartStore = defineStore('chart',()=> {
                     shade: "light",
                     type: "vertical",
                     opacityFrom: 1,
-                    opacityTo: 0.1,
+                    opacityTo: 0.6,
                 }
             },
             yaxis:{
@@ -58,12 +58,14 @@ export const useChartStore = defineStore('chart',()=> {
             dataLabels:{
                 enabled: true,
             },
-            colors: ["#059669"],
+            colors: ["#14532d"],
             fill: {
                 type: "gradient",
                 gradient: {
                     shade: "light",
                     type: "vertical",
+                    opacityFrom: 1,
+                    opacityTo: 1,
                 }
             },
             yaxis: {
@@ -97,14 +99,14 @@ export const useChartStore = defineStore('chart',()=> {
             dataLabels:{
                 enabled: true
             },
-            colors: ["#0284c7"],
+            colors: ["#3730a3"],
             fill: {
                 type: "gradient",
                 gradient: {
                     shade: "light",
                     type: "vertical",
                     opacityFrom: 1,
-                    opacityTo: 0.1,
+                    opacityTo: 0.6,
                 }
             },
             yaxis: {

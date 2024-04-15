@@ -1,5 +1,4 @@
 <script setup>
-
 import {onMounted, onUnmounted , ref, watchEffect} from "vue";
 import StracturesFlex from "../../components/StracturesFlex.vue";
 import {useConfigureStore} from "@/stores/configure.js";
@@ -9,7 +8,6 @@ import Error from "../../components/Static/Error.vue";
 import DailyAnalysisInSummary from "@/components/weather/daily/DailyAnalysisInSummary.vue";
 import PerTheeHoursAnalysis from "@/components/weather/daily/PerTheeHoursAnalysis.vue";
 import DailyCharts from "@/components/weather/daily/DailyCharts.vue";
-
 
 const route = useRoute();
 const day = ref(route.params.days);
@@ -35,11 +33,11 @@ onUnmounted(() =>{
 const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = ref(false);
 </script>
 
-<template class="">
+<template>
   <div>
     <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="configureStore.themes[configureStore.themeNum].text" class=" font-bold max-md:pb-16" :column="true" items="center">
 
-      <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{( weather==null) ? error :  weather.resolvedAddress}}</h2>
+      <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
         <p class="mt-3 font-semibold text-2xl " :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t(`days.day${new Date(weather.days[day].data.datetime).getDay()}`)}} {{new Date( weather.days[day].data.datetime).getUTCDate()}}/{{new Date( weather.days[day].data.datetime).getMonth() + 1}}/{{new Date( weather.days[day].data.datetime).getFullYear()}}</p>
       </div>
@@ -53,10 +51,4 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
     </StracturesFlex>
     <Error v-show="configureStore.open===false" v-if="weather!=null && weather.hasOwnProperty(`Error`)" />
   </div>
-
-
 </template>
-
-<style scoped>
-
-</style>

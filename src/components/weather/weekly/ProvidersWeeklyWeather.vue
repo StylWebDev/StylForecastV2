@@ -26,7 +26,7 @@ const props = defineProps({
 <template>
   <div class="fadeIn">
     <StracturesFlex class=" mt-5" :column="true" items="center" justify="center">
-      <h4 :class="configureStore.themes[configureStore.themeNum].about">{{$t('daily.compare')}}:</h4>
+      <h4 class="text-center" :class="configureStore.themes[configureStore.themeNum].about">{{$t('daily.compare')}}:</h4>
       <StracturesFlex class="space-x-2" :row="true" items="center" justify="end" >
         <button :class="configureStore.trans" class=" my-2 bg-pink-300 px-4 rounded-3xl text-neutral-900 hover:brightness-150 block"  type="button"  @click="[count=0,showProvidersWeather=true]">VisualCrossing</button>
         <button :class="configureStore.trans" class=" my-2 bg-pink-300 px-4 rounded-3xl text-neutral-900 hover:brightness-150 block" type="button"  @click="[count=1, showProvidersWeather=true]">OpenMeteo</button>

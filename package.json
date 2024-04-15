@@ -2,9 +2,14 @@
   "name": "stylforecast",
   "description": "A web app created to provide weather forecast for 42 Greek cities.",
   "author": "Konstantinos Stylianou",
-  "keywords": ["Api","Vue JS","Tailwinds Css","Pinia"],
+  "keywords": [
+    "Api",
+    "Vue JS",
+    "Tailwinds Css",
+    "Pinia"
+  ],
   "private": true,
-  "version": "2.0.1",
+  "version": "2.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
