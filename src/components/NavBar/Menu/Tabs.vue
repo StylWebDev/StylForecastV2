@@ -24,8 +24,8 @@ watch(mode, (newVal)=>{
   <StracturesFlex :column="true" justify="center" items="center" class="w-[100%]">
     <RouterLink v-for="(value,index) in routes"
                 @click="configureStore.open=false"
-                :active-class="(configureStore.themeNum === 0) ? `text-yellow-400 after:hidden text-3xl bg-eggplant-500` : `bg-weather-600 text-yellow-400 after:hidden text-3xl`"
-                :class="[(configureStore.themeNum === 0) ? `hover:bg-eggplant-500` : `hover:bg-weather-600`,configureStore.themes[configureStore.themeNum].text_trans, configureStore.trans]"
+                :active-class="(configureStore.themeNum === 0) ? `text-yellow-400 after:hidden text-3xl bg-eggplant-500` : `bg-weather-500 text-yellow-400 after:hidden text-3xl`"
+                :class="[(configureStore.themeNum === 0) ? `hover:bg-eggplant-500` : `hover:bg-weather-500`,configureStore.themes[configureStore.themeNum].text_trans, configureStore.trans]"
                 class="text-white w-[100%] text-center py-4 text-2xl font-semibold
                        max-md:after:hidden after:bg-yellow-400 after:relative after:block after:left-0 after:w-[0%] hover:after:w-[100%] after:h-0.5 after:duration-500 after:ease-in after:mt-0.5"
                 :to="value.link">
