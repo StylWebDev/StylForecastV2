@@ -26,7 +26,7 @@ export const useConfigureStore = defineStore('configure', () => {
             frame: 'border-2 border-white border-opacity-80 rounded-2xl bg-neutral-900 bg-opacity-20',
             text: 'text-neutral-100',
             searchbar: 'text-center py-0.5 outline-3 outline-neutral-900 rounded-2xl text-neutral-900 bg-neutral-100 capitalize  font-normal w-auto xl:w-[280px] max-sm:w-[200px] text-neutral-100 sm:text-lg md:text-xl lg:text-lg max-[300px]:w-[200px]',
-            backgroundColor: "linear-gradient(#23789D,#23789D,#8FC9D7,#8FC9D7,#D8EEEE)",
+            backgroundColor: "linear-gradient(#23789D,#23789D,#8FC9D7)",
             about: 'text-yellow-400',
             foregroundColor: "bg-transparent",
             charts: "md:w-[400px] lg:w-[480px] sm:w-[600px]   xl:w-[650px] 2xl:w-[520px] max-md:w-screen  min-[2000px]:w-[650px]",
