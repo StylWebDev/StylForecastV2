@@ -37,7 +37,7 @@ watchEffect(async () => {
           <h1 class="transition ease-in duration-500 align-middle inline max-sm:text-4xl sm:text-6xl md:text-6xl lg:text-7xl animate-pulse" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t("home.title")}}</h1>
         </div>
         <StracturesFlex class=" mt-8 cursor-default"  :row="true" justify="center" items="center">
-          <p class="text-amber-400 text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.slogan")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
+          <p class="text-yellow-400 text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.slogan")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
         </StracturesFlex>
         <StracturesFlex class="apexFade max-sm:mt-14 mt-20 cursor-default"  :row="true" justify="center" items="center">
           <h2 :class="configureStore.trans" class=" align-middle sm:text-lg md:text-xl lg:text-2xl">{{$t("home.purpose")}} !</h2>
