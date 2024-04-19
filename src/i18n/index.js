@@ -1,7 +1,7 @@
 import {createI18n} from "vue-i18n";
 
-const res1 = await fetch("https://translator-api-0bhf.onrender.com/en");
-const res2 = await fetch("https://translator-api-0bhf.onrender.com/el");
+const res1 = await fetch("http://localhost:3032/en");
+const res2 = await fetch("http://localhost:3032/el");
 const en = await res1.json();
 const el = await res2.json();
 

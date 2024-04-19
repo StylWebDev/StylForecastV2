@@ -30,7 +30,7 @@ const props = defineProps({
 
         <h1 :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]"
             class="cursor-default text-2xl text-center mt-3 mb-5 align-middle capitalize sm:text-xl md:text-2xl lg:text-3xl min-[1920px]:text-3xl max:sm:text-lg">
-          <Icon class="inline animate-pulse" width="30" icon="line-md:cloud-braces-loop"/> {{($i18n.locale === `el`) ? `Συνοπτική Πρόγνωση Καιρού` : ` Concise Weather Forecast`}}
+          <Icon class="inline animate-pulse" width="30" icon="line-md:cloud-braces-loop"/> {{$t(`forecastDetails.concise`) }}
         </h1>
 
         <div class=" max-md:flex max-md:flex-row max-md:overflow-x-auto max-md:gap-x-2 max-sm:w-[300px] max-[350px]:w-[250px] max-md:w-[420px] w-[90%]"

@@ -37,7 +37,10 @@ const props = defineProps({
 
       <StracturesFlex :row="true" justify="center" class="sm:col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-4 text-center mt-2 gap-3">
         <div class=" align-middle font-extrabold">
-          <img class="inline" :class="(count === 1) ? `rounded-full` : null " :src=" (count === 0) ? `https://avatars.githubusercontent.com/u/52202145?v=4` : `https://graphql-engine-cdn.hasura.io/assets/main-site/marketplace/openweather.svg`" width="40" alt="VisualCrossingLogo">
+          <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" enter-active-class="transition-opacity duration-1000 ease-out" leave-active-class="transition-all duration-1000 ease-out absolute">
+            <img v-if="count===0" class="inline" src="https://avatars.githubusercontent.com/u/52202145?v=4" width="40" alt="VisualCrossingLogo">
+            <img v-else class="inline rounded-full" src="https://graphql-engine-cdn.hasura.io/assets/main-site/marketplace/openweather.svg" width="40" alt="OpenMeteoLogo">
+          </Transition>
           {{(count===0) ? `Visual Crossing` : `Open-Meteo`}}
         </div>
         <div>

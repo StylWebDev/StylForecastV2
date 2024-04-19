@@ -3,9 +3,16 @@ import {useConfigureStore} from "../stores/configure.js";
 import StracturesFlex from "../components/StracturesFlex.vue";
 import Footer from "../components/Static/Footer.vue";
 import {useI18n} from "vue-i18n";
+import {onMounted, ref} from "vue";
 const {t} = useI18n()
 const configureStore = useConfigureStore()
+const i = ref(1)
 
+onMounted(()=> {
+  setInterval(() => {
+    (i.value === 4) ? i.value=1 : i.value+=1;
+  },5000)
+})
 
 </script>
 
@@ -17,7 +24,7 @@ const configureStore = useConfigureStore()
         <p class=" mt-2 md:text-3xl max-xl:text-2xl font-semibold " :class="[configureStore.themes[configureStore.themeNum].about, configureStore.trans]">StylsForecast</p>
       </hgroup>
       <ul class="flex flex-col 2xl:items-start 2xl:list-disc    cursor-default space-y-7   mt-16 max-md:mt-5 fadeIn">
-        <li v-for="index in 4" :key="index" :class="[configureStore.themes[configureStore.themeNum].text_trans,configureStore.trans]" class="md:text-xl max-md:text-base md:font-semibold">{{ $t(`about.purposes${index}`)}}</li>
+        <li v-for="index in 4" :key="index" :class="[(i===index) ? `text-yellow-400 scale-105 transition-all duration-1000 ease-in` : `text-white transition-all duration-1000 ease-out` ,configureStore.trans]" class="md:text-xl max-md:text-base md:font-semibold">{{ $t(`about.purposes${index}`)}}</li>
       </ul>
     </StracturesFlex>
     <Footer class="absolute"/>

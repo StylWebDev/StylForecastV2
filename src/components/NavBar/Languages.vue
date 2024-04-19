@@ -12,11 +12,11 @@ const configureStore = useConfigureStore()
         <MenuItems class="bg-neutral-800 bg-opacity-40 border-2 border-neutral-100 border-opacity-20 rounded py-1 pb-1  px-2 mt-7">
           <MenuItem as="a1" v-for="locale in $i18n.availableLocales" class="bg-transparent mt-4 rounded-2xl block text-center  divide-y-2 divide-neutral-50">
             <button type="button"
-                :title="($i18n.locale===`en`) ? `Language` : `Γλώσσα`"
+                :title="$t(`nav.locale1`)"
                 @click="[$i18n.locale=locale,configureStore.lang=locale]"
                 :class="configureStore.trans"
                 class="block hover:brightness-150">
-              <Icon class="inline" width="35px" :icon="configureStore.icons[`${locale}`]"/>{{(locale==="el" ? `Ελληνικά` : `English`)}}
+              <Icon class="inline" width="35px" :icon="configureStore.icons[`${locale}`]"/>{{$t(`nav.language`)}}
             </button>
           </MenuItem>
       </MenuItems>

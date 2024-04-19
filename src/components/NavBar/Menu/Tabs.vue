@@ -31,7 +31,7 @@ watch(mode, (newVal)=>{
                 :to="value.link">
       {{$t(`nav.link${index+1}`)}}</RouterLink>
     <div class="mt-2 py-0.5 active:outline-0 focus:outline-0 hidden max-sm:block">
-      <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,configureStore.trans]" :title="($i18n.locale===`en`) ? `Change Theme` : `Αλλαγή θέματος`" class="hover:scale-110 hover:brightness-150">
+      <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,configureStore.trans]" :title="$t(`nav.theme`)" class="hover:scale-110 hover:brightness-150">
         <Icon width="30" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" icon="line-md:light-dark-loop"/></button>
     </div>
   </StracturesFlex>
