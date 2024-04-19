@@ -5,7 +5,7 @@ An interactive web application to provide weather forecast for 42 Greek cities.
 ## StylForecast Purpose:
 StylForecast provide users with real-time weather data, Daily and Weekly Forecast, Historical Weather data, and other weather-related data.
 
-## What information StylForecast API Provides? :
+## What information StylForecast Provides? :
 
 - ### Weather Forecast
     - [x] Weather Forecast for all cities around the world.
