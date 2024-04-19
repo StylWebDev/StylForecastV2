@@ -8,7 +8,7 @@ StylForecast provide users with real-time weather data, Daily and Weekly Forecas
 ## What information StylForecast Provides? :
 
 - ### Weather Forecast
-    - [x] Weather Forecast for all cities around the world.
+    - [x] Weather Forecast for all 42 cities.
     - [x] 24h Current Weather Conditions.
     - [x] 5-day weather Forecast.
     - [x] Daily weather forecast every 3 hours.
