@@ -23,7 +23,7 @@ StylForecast provide users with real-time weather data, Daily and Weekly Forecas
 - For security measures all sensitive information was converted into environment variables (aka. they are not accessible).
 - Upgraded vite to its latest version
 
-## How to use it:
+## Usage:
     $ git clone https://github.com/AliBaBas02/StylForecast-ApiV2.git
     $ npm i
     $ npm run dev
