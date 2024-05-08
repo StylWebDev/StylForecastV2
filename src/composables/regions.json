@@ -1,0 +1,102 @@
+{
+  "en": [
+    {
+      "name": "Attica",
+      "cities": ["Athens", "Piraeus"]
+    },
+     {
+       "name": "Central Greece ",
+       "cities": ["Thiba Gr","Lamia","Chalkida"]
+    },
+     {
+       "name": "Central Macedonia",
+       "cities": ["Thessaloniki","Chalkidiki","Giannitsa","Katerini","Kilkis","Alexandreia GR","Serres", "Veroia"]
+    },
+    {
+      "name": "Eastern Macedonia and Thrace",
+      "cities": ["Alexandroupoli","Drama","Kavala","Komotini","Xanthi"]
+    },
+    {
+      "name": "Crete",
+      "cities": ["Heraklion","Chania","Rethymno"]
+    },
+    {
+      "name": "Epirus ",
+      "cities": ["Ioannina","Preveza"]
+    },{
+      "name": "Ionian Islands ",
+      "cities": ["Corfu"]
+    },{
+      "name": "North Aegean ",
+      "cities": ["Mytilene"]
+    },{
+      "name": "Peloponnese",
+      "cities": ["Kalamata","Tripoli GR","Argos","Sparta","Korinthos","Nafplio"]
+    },{
+      "name": "South Aegean",
+      "cities": ["Rhodes"]
+    },{
+      "name": "Thessaly",
+      "cities": ["Larissa","Volos","Karditsa","Trikala","Tyrnavos"]
+    },{
+      "name": "Western Greece ",
+      "cities": ["Patras","Agrinio","Aigio","Salamina GR"]
+    },{
+      "name": "Western Macedonia ",
+      "cities": ["Grevena","Florina","Kozani","Kastoria","Ptolemaida"]
+    },{
+      "name": "Mount Athos",
+      "cities": ["Mount Athos"]
+    }
+  ],
+  "el": [
+    {
+      "name": "Αττική",
+      "cities": ["Αθήνα", "Πειραιάς"]
+    },
+    {
+      "name": "Στερεά Ελλάδα",
+      "cities": ["Θήβα","Λαμία","Χαλκίδα"]
+    },
+    {
+      "name": "Κεντρική Μακεδονία",
+      "cities": ["Θεσσαλονίκη","Χαλκιδική","Γιαννιτσά","Κατερίνη","Κιλκίς","Αλεξάνδρεια","Σέρρες", "Βέροια"]
+    },
+    {
+      "name": "Ανατολική Μακεδονία και Θράκη",
+      "cities": ["Αλεξανδρούπολη","Δράμα","Καβάλα","Κομοτηνή","Xanthi"]
+    },
+    {
+      "name": "Κρήτη",
+      "cities": ["Ηράκλειο","Χανιά","Ρέθυμνο"]
+    },
+    {
+      "name": "Ήπειρος ",
+      "cities": ["Ιωάννινα","Πρέβεζα"]
+    },{
+      "name": "Ιόνια νησιά ",
+      "cities": ["Κέρκυρα"]
+    },{
+      "name": "Βόρειο Αιγαίο",
+      "cities": ["Μυτιλήνη"]
+    },{
+      "name": " Πελοπόννησος",
+      "cities": ["Καλαμάτα","Τρίπολη","Άργος","Σπάρτη","Κόρινθος","Ναύπλιο"]
+    },{
+      "name": "Νότιο Αιγαίο",
+      "cities": ["Ρόδος"]
+    },{
+      "name": "Θεσσαλία",
+      "cities": ["Λάρισα","Βόλος","Καρδίτσα","Τρίκαλα","Τύρναβος"]
+    },{
+      "name": "Δυτική Ελλάδα ",
+      "cities": ["Πάτρα","Αγρίνιο","Aigio","Σαλαμίνα"]
+    },{
+      "name": "Δυτική Μακεδονία",
+      "cities": ["Γρεβενά","Φλώρινα","Kozani","Kastoria","Πτολεμαΐδα"]
+    },{
+      "name": "Άγιον Όρος",
+      "cities": ["Άγιον Όρος"]
+    }
+  ]
+  }
