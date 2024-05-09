@@ -60,7 +60,7 @@ watch(selected, (newVal) => {
                 Nothing found.
               </div>
               <ComboboxOption v-for="city in filteredCities" as="template" :key="city.id" :value="($i18n.locale === `en`) ? city.en : city.gr" v-slot="{ selected, active }">
-                <li class="relative cursor-default select-none py-2 pl-10 max-sm:pl-0 max-sm:text-sm pr-4" :class="[{'bg-eggplant-500 text-yellow-400': active && configureStore.themeNum===0, 'bg-weather-600 text-neutral-900': active && configureStore.themeNum===1,'text-black': !active, }, configureStore.trans]">
+                <li class="relative cursor-default select-none py-2 pl-10 max-sm:pl-0 max-sm:text-sm pr-4" :class="[{'bg-eggplant-700 text-yellow-400': active && configureStore.themeNum===0, 'bg-weather-600 text-neutral-900': active && configureStore.themeNum===1,'text-black': !active, }, configureStore.trans]">
                 <span class="block truncate" :class="{ 'font-medium': selected, 'font-normal': !selected }">
                   <Icon class="inline" icon="clarity:bank-line" /> {{($i18n.locale === `en`) ? city.en.split(' ')[0] : city.gr}}
                 </span>
