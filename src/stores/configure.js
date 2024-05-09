@@ -36,6 +36,8 @@ export const useConfigureStore = defineStore('configure', () => {
 
     const trans = ref("transition ease-linear duration-300 delay-100");
 
+    const showRegions = ref(false);
+
     const daysArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
     const  icons = ref({
@@ -90,5 +92,5 @@ export const useConfigureStore = defineStore('configure', () => {
     const selectedCity = ref(`Find Your Area`)
 
 
-    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity}
+    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions}
 })
