@@ -18,7 +18,7 @@ const route = useRoute()
                                   ? `h-auto sm:h-screen`
                                   : `h-auto`"
   >
-    <Header class="md:h-[63px] sticky top-0 z-40" />
+    <Header class=" sticky top-0 z-40" />
     <Offcanvas  :class="[(configureStore.open) ? `opacity-100 h-screen` : `opacity-0 h-0`]"
                 class=" top-[63px] fixed w-screen right-0 transition-opacity duration-1000  ease-in-out z-50"
                 @click="configureStore.selectedCity = `Find Your Area`"/>
