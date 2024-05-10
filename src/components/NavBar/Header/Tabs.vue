@@ -8,18 +8,24 @@ import MenuButton from "@/components/NavBar/Header/MenuButton.vue";
 import {onMounted, ref, watch} from "vue";
 const configureStore = useConfigureStore()
 
-
+const theme = window.localStorage.getItem("theme");
 const mode = ref(false)
 const darkThemeMq = ref(window.matchMedia("(prefers-color-scheme: dark)"));
 
 onMounted(()=> {
-  (darkThemeMq.value.matches) ? configureStore.themeNum=0 : configureStore.themeNum=1;
+  if (theme) {
+    (theme === `dark`) ? configureStore.themeNum=0 : configureStore.themeNum=1 ;
+  } else {
+    (darkThemeMq.value.matches) ? configureStore.themeNum=0 : configureStore.themeNum=1;
+    (darkThemeMq.value.matches) ? window.localStorage.setItem(`theme`,`dark`) : window.localStorage.setItem(`theme`,`light`);
+  }
   document.body.style.backgroundImage = `${configureStore.themes[configureStore.themeNum].backgroundColor}`;
   configureStore.open = false;
 })
 
 watch(mode, (newVal)=>{
   (configureStore.themeNum===1) ? configureStore.themeNum=0 : configureStore.themeNum=1;
+  (configureStore.themeNum===1) ? window.localStorage.setItem(`theme`,`light`) : window.localStorage.setItem(`theme`,`dark`);
   document.body.style.backgroundImage = `${configureStore.themes[configureStore.themeNum].backgroundColor}`;
 })
 </script>

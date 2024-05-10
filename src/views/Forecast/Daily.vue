@@ -7,29 +7,22 @@ import {useWeather} from "@/composables/weather.js";
 import Error from "../../components/Static/Error.vue";
 import DailyAnalysisInSummary from "@/components/weather/daily/DailyAnalysisInSummary.vue";
 import PerTheeHoursAnalysis from "@/components/weather/daily/PerTheeHoursAnalysis.vue";
-import DailyCharts from "@/components/weather/daily/DailyCharts.vue";
 
 const route = useRoute();
 const day = ref(route.params.days);
 const windowHeight = ref(window.innerHeight);
 const configureStore = useConfigureStore();
 
-
 const {getWeather} = useWeather();
-const weather = ref(null);
+const weather = ref(await getWeather(route.params.city, "daily"));
 
-watchEffect(async () => {
-  weather.value = await getWeather(route.params.city, "daily");
-})
 
 onMounted(() => {
     window.addEventListener('resize', onResize);
 });
-
 onUnmounted(() =>{
   window.removeEventListener('resize',onResize);
 });
-
 const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = ref(false);
 </script>
 

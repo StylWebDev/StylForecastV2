@@ -4,17 +4,18 @@ import cities from "@/composables/cities.json"
 import {Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, TransitionRoot,} from '@headlessui/vue'
 import {Icon} from "@iconify/vue";
 import {useConfigureStore} from "@/stores/configure.js";
-
+import {useI18n} from "vue-i18n";
+const {t} = useI18n();
 
 let query = ref('')
-const pushCity = ref();
+const pushCity = ref('');
 const configureStore = useConfigureStore()
-const selected = ref(`Type Your Area`)
+const selected = ref(t('daily.search'))
 
 let filteredCities = computed(() =>
-    query.value === ''
+    (query.value === '')
         ? cities
-        : cities.filter((city) =>   (city.en.toLowerCase().includes(query.value.toLowerCase()))
+        : cities.filter((city) => (city.en.toLowerCase().includes(query.value.toLowerCase()))
             ? city.en.toLowerCase().includes(query.value.toLowerCase())
             : city.gr.toLowerCase().includes(query.value.toLowerCase())
         )
@@ -38,7 +39,7 @@ watch(selected, (newVal) => {
 </script>
 
 <template>
-    <div class="top-16 w-64 max-sm:w-40 max-xl:w-auto max-[300px]:w-32" @click="(selected===`Type Your Area`) ? selected=`` : null" >
+    <div class="top-16 w-64 max-sm:w-40 max-xl:w-auto max-[300px]:w-28" @click="(selected===$t(`daily.search`)) ? selected=`` : null" >
       <Combobox v-model="selected" ref="target">
         <div class="relative mt-1">
           <div
@@ -59,7 +60,7 @@ watch(selected, (newVal) => {
               <div v-if="filteredCities.length === 0 && query !== ''" class="relative cursor-default select-none px-4 py-2 text-gray-700">
                 Nothing found.
               </div>
-              <ComboboxOption v-for="city in filteredCities" as="template" :key="city.id" :value="($i18n.locale === `en`) ? city.en : city.gr" v-slot="{ selected, active }">
+              <ComboboxOption v-for="(city,index) in filteredCities" as="template" :key="index+1" :value="($i18n.locale === `en`) ? city.en : city.gr" v-slot="{ selected, active }">
                 <li class="relative cursor-default select-none py-2 pl-10 max-sm:pl-0 max-sm:text-sm pr-4" :class="[{'bg-eggplant-700 text-yellow-400': active && configureStore.themeNum===0, 'bg-weather-600 text-neutral-900': active && configureStore.themeNum===1,'text-black': !active, }, configureStore.trans]">
                 <span class="block truncate" :class="{ 'font-medium': selected, 'font-normal': !selected }">
                   <Icon class="inline" icon="clarity:bank-line" /> {{($i18n.locale === `en`) ? city.en.split(' ')[0] : city.gr}}

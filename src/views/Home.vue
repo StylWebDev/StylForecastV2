@@ -1,11 +1,9 @@
 <script setup>
 import StracturesFlex from "../components/StracturesFlex.vue";import {Icon} from "@iconify/vue";import {useConfigureStore} from "../stores/configure.js";
-import {onMounted, ref, watch, watchEffect} from "vue";import {useWeather} from "../composables/weather.js";
+import {onMounted, ref, watchEffect} from "vue";import {useWeather} from "../composables/weather.js";
 
 const {getWeather} = useWeather();
 const configureStore = useConfigureStore();
-const searchCity = ref('');
-const truth = ref(true);
 const weather = ref(null);
 const city =  ref("")
 
@@ -15,11 +13,6 @@ onMounted(  () => {
     city.value = (await res.json()).city;
   })
 })
-
-watch(searchCity,() =>{
-  (searchCity.value.length > 0) ? truth.value=false : truth.value=true;
-} )
-
 
 watchEffect(async () => {
   weather.value = await getWeather(city.value, "current")
@@ -37,16 +30,16 @@ watchEffect(async () => {
           <h1 class="transition ease-in duration-500 align-middle inline max-sm:text-4xl sm:text-6xl md:text-6xl lg:text-7xl animate-pulse" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t("home.title")}}</h1>
         </div>
         <StracturesFlex class=" mt-8 cursor-default"  :row="true" justify="center" items="center">
-          <p class="text-yellow-400 text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.slogan")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
+          <p class=" text-yellow-400 text-4xl align-middle max-sm:text-2xl sm:text-3xl md:text-4xl lg:text-5xl">{{$t("home.purpose")}} <Icon width="50px" class="inline max-sm:hidden" :icon="configureStore.icons.rocket"/> <Icon width="30px" class="hidden max-sm:inline" :icon="configureStore.icons.rocket"/></p>
         </StracturesFlex>
-        <StracturesFlex class="apexFade max-sm:mt-14 mt-20 cursor-default"  :row="true" justify="center" items="center">
-          <h2 :class="configureStore.trans" class=" align-middle sm:text-lg md:text-xl lg:text-2xl">{{$t("home.purpose")}} !</h2>
-        </StracturesFlex>
+
       </StracturesFlex>
 
       <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)"  class="font-bold max-sm:mt-2 max-md:mt-5 mt-12 max-md:pb-16" :class="configureStore.themes[configureStore.themeNum].text" :column="true" items="center">
         <div class="fadeIn mb-4 text-center">
-          <h1 class="font-semibold text-xl align-middle" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]"><Icon class="inline animate-pulse" width="20" icon="fad:armrecording"/>  {{$t('forecastDetails.live')}}</h1>
+          <h1 class="font-semibold text-xl text-rose-600 align-middle" :class="configureStore.trans">
+            <Icon class="inline animate-pulse" width="20" icon="fad:armrecording"/>  {{$t('forecastDetails.live')}}
+          </h1>
           <p class="cursor-default text-center text-shadow mt-5 align-middle capitalize sm:text-base md:text-base lg:text-lg min-[1920px]:text-xl">{{weather.resolvedAddress}}</p>
         </div>
         <StracturesFlex :row="true" items="center" justify="center" class="content-center items-center fadeIn cursor-default">

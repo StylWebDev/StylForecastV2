@@ -32,10 +32,11 @@ const props = defineProps({
         <button :class="configureStore.trans" class=" my-2 bg-pink-300 px-4 rounded-3xl text-neutral-900 hover:brightness-150 block" type="button"  @click="[count=1, showProvidersWeather=true]">OpenMeteo</button>
       </StracturesFlex>
     </StracturesFlex>
-    <Transition enter-active-class="fadeInCities" leave-active-class="fadeOutCities">
-      <div v-if="showProvidersWeather" class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 grid-flow-row font-semibold mx-1 mb-5 pb-3 lg:mx-10" :class="[configureStore.themes[configureStore.themeNum].text, configureStore.themes[configureStore.themeNum].frame]">
 
-      <StracturesFlex :row="true" justify="center" class="sm:col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-4 text-center mt-2 gap-3">
+    <Transition enter-active-class="fadeInCities" leave-active-class="fadeOutCities">
+      <div v-if="showProvidersWeather" class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 grid-flow-row font-semibold mx-1 mb-5 pb-3 lg:mx-10" :class="[configureStore.themes[configureStore.themeNum].text, configureStore.themes[configureStore.themeNum].frame]">
+
+      <StracturesFlex :row="true" justify="center" class="max-sm:col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-4 text-center mt-2 gap-3">
         <div class=" align-middle font-extrabold">
           <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" enter-active-class="transition-opacity duration-1000 ease-out" leave-active-class="transition-all duration-1000 ease-out absolute">
             <img v-if="count===0" class="inline" src="https://avatars.githubusercontent.com/u/52202145?v=4" width="40" alt="VisualCrossingLogo">
@@ -48,7 +49,15 @@ const props = defineProps({
         </div>
       </StracturesFlex>
 
-      <StracturesFlex v-for="(value,index) in (count === 0) ? providersWeather.visualCrossingData.days : providersWeather.openWeatherData.days " :key="index" class=" mt-4 max-md:mx-1 md:mx-4 bg-neutral-900 bg-opacity-20 p-4 rounded-3xl" :class="[(value.data.conditions.length > 20) ? `sm:pr-4` : null, (index === 0) ? `md:col-span-2 xl:col-span-4 max-xl:w-auto xl:w-1/2 xl:justify-self-center`: null]" :column="true" items="center" justify="center">
+      <StracturesFlex v-for="(value,index) in (count === 0) ? providersWeather.visualCrossingData.days : providersWeather.openWeatherData.days " :key="index"
+                      class=" mt-4 max-md:mx-1 md:mx-4 bg-neutral-900 bg-opacity-20 p-4 rounded-3xl"
+                      :class="[
+                          (value.data.conditions.length > 20) ? `sm:pr-4` : null,
+                          (index === 0) ? `sm:col-span-2 xl:col-span-4 max-xl:w-auto xl:w-1/2 xl:justify-self-center`: null
+                          ]
+"
+                      :column="true" items="center" justify="center"
+      >
         <h6 v-if="index===0" class="text-lg text-center">{{resolvedAddress}}</h6>
         <p :class="(index===0) ? configureStore.themes[configureStore.themeNum].about : configureStore.themes[configureStore.themeNum].text">{{(index===0) ? $t('daily.now') : $t(`days.day${new Date(value.data.datetime).getDay()}`)}}</p>
 

@@ -30,7 +30,7 @@ const props = defineProps({
 
         <h1 :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]"
             class="cursor-default text-2xl text-center mt-3 mb-5 align-middle capitalize sm:text-xl md:text-2xl lg:text-3xl min-[1920px]:text-3xl max:sm:text-lg">
-          <Icon class="inline animate-pulse" width="30" icon="line-md:cloud-braces-loop"/> {{$t(`forecastDetails.concise`) }}
+           {{$t(`forecastDetails.concise`) }}
         </h1>
 
         <div class=" max-md:flex max-md:flex-row max-md:overflow-x-auto max-md:gap-x-2 max-sm:w-[300px] max-[350px]:w-[250px] max-md:w-[420px] w-[90%]"
@@ -78,12 +78,12 @@ const props = defineProps({
                          :class="(parseInt(day)===0 && (new Date().getHours()) >= 12) ? `xl:flex-row gap-3`: ` xl:flex-col`">
           <StracturesFlex :column="true" items="center" justify="center" >
             <h4>{{$t('map.temp')}}</h4>
-            <iframe  height="450" class=" scroll mt-4 rounded-3xl  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=temp&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  frameborder="0"/>
+            <iframe  height="450" class=" scroll mt-4 rounded-md  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=temp&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  frameborder="0"/>
           </StracturesFlex>
 
           <StracturesFlex :column="true" items="center" justify="center" >
             <h4>{{$t('map.precip')}}</h4>
-            <iframe height="450" class=" mt-4 rounded-3xl  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" frameborder="0"/>
+            <iframe height="450" class=" mt-4 rounded-md  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" frameborder="0"/>
           </StracturesFlex>
 
         </StracturesFlex>

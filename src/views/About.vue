@@ -27,6 +27,5 @@ onMounted(()=> {
         <li v-for="index in 4" :key="index" :class="[(i===index) ? `text-yellow-400 scale-105 transition-all duration-1000 ease-in` : `text-white transition-all duration-1000 ease-out` ,configureStore.trans]" class="md:text-xl max-md:text-base md:font-semibold">{{ $t(`about.purposes${index}`)}}</li>
       </ul>
     </StracturesFlex>
-    <Footer class="absolute"/>
   </div>
 </template>

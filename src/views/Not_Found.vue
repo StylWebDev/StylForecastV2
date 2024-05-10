@@ -2,7 +2,6 @@
 import {useConfigureStore} from "../stores/configure.js";
 import StracturesFlex from "../components/StracturesFlex.vue";
 import {Icon} from "@iconify/vue";
-
 const configureStore = useConfigureStore()
 </script>
 
