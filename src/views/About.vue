@@ -1,10 +1,7 @@
 <script setup>
 import {useConfigureStore} from "../stores/configure.js";
 import StracturesFlex from "../components/StracturesFlex.vue";
-import Footer from "../components/Static/Footer.vue";
-import {useI18n} from "vue-i18n";
 import {onMounted, ref} from "vue";
-const {t} = useI18n()
 const configureStore = useConfigureStore()
 const i = ref(1)
 
