@@ -9,7 +9,7 @@ const configureStore = useConfigureStore();
 <template>
 <div class="fadeIn max-[300px]:mt-10 w-full grid max-[300px]:grid-cols-1  min-[301px]:grid-cols-2  justify-items-center justify-center items-center">
   <StracturesFlex :row="true" class="text-xs max-[300px]:hidden items-center" >
-    <img src="/logo2.svg" alt="Logo" class="inline max-sm:size-16 size-10">
+    <img src="/logo2.svg" alt="Logo" class="inline max-sm:size-12 size-10">
     <StracturesFlex :column="true" justify="center" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class="align-middle text-sm text-center"><div>© 2024</div><div>{{$t('footer.rights')}}</div></StracturesFlex>
   </StracturesFlex>
   <StracturesFlex :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" class=" max-sm:text-sm " :column="true">

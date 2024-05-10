@@ -40,7 +40,7 @@ const route = useRoute()
         </template>
       </Suspense>
     </div>
-    <Footer :class="themes[configureStore.themeNum].headerFooterBgColor" class="z-50 py-2"/>
+    <Footer :class="themes[configureStore.themeNum].headerFooterBgColor" class="z-40 py-2"/>
   </StracturesFlex>
 </template>
 
