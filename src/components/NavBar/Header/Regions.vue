@@ -44,7 +44,7 @@ const areaIndex = ref(0)
           <a v-for="(area,index) in regions[$i18n.locale][areaIndex].cities" :key="index+1" :href="`/weather/${regions.en[areaIndex].cities[index]}`"
              class="hover:text-yellow-500 align-middle text-center sm:px-14 py-1 sm:rounded-md max-sm:w-[100%]"
              :class="[themes[configureStore.themeNum].regionsHoverBgColor,configureStore.trans]">
-            <Icon icon="icon-park-twotone:museum-one" class="inline size-4"/> {{($i18n.locale === `en`) ? area.split(' ')[0] : area}}
+            <Icon icon="icon-park-twotone:museum-one" class="inline size-4"/> {{($i18n.locale === `en`) ? (area.split(' ')[1] === `GR`) ? area.split(' ')[0] : area : area}}
           </a>
         </StracturesFlex>
       </StracturesFlex>

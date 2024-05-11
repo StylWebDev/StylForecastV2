@@ -10,37 +10,37 @@
     },
      {
        "name": "Central Macedonia",
-       "cities": ["Thessaloniki","Chalkidiki","Giannitsa","Katerini","Kilkis","Alexandreia GR","Serres", "Veroia"]
+       "cities": ["Thessaloniki","Chalkidiki","Giannitsa","Katerini","Kilkis","Alexandreia GR","Serres", "Veroia", "Edessa","Naousa","Livadeia"]
     },
     {
       "name": "Eastern Macedonia and Thrace",
-      "cities": ["Alexandroupoli","Drama","Kavala","Komotini","Xanthi"]
+      "cities": ["Alexandroupoli","Drama","Kavala","Komotini","Xanthi","Orestiada"]
     },
     {
       "name": "Crete",
-      "cities": ["Heraklion","Chania","Rethymno"]
+      "cities": ["Heraklion","Chania","Rethymno","Agios Nikolaos","Sitia GR"]
     },
     {
       "name": "Epirus ",
-      "cities": ["Ioannina","Preveza"]
+      "cities": ["Ioannina","Preveza", "Arta GR", "Igoumenitsa"]
     },{
       "name": "Ionian Islands ",
-      "cities": ["Corfu"]
+      "cities": ["Corfu","Argostoli"]
     },{
       "name": "North Aegean ",
-      "cities": ["Mytilene"]
+      "cities": ["Mytilene","Chios"]
     },{
       "name": "Peloponnese",
-      "cities": ["Kalamata","Tripoli GR","Argos","Sparta","Korinthos","Nafplio"]
+      "cities": ["Kalamata","Tripoli GR","Argos","Sparta","Korinthos","Nafplio","Loutraki"]
     },{
       "name": "South Aegean",
-      "cities": ["Rhodes"]
+      "cities": ["Rhodes","Kos","Kalymnos","Ermoupoli"]
     },{
       "name": "Thessaly",
       "cities": ["Larissa","Volos","Karditsa","Trikala","Tyrnavos"]
     },{
       "name": "Western Greece ",
-      "cities": ["Patras","Agrinio","Aigio","Salamina GR"]
+      "cities": ["Patras","Agrinio","Aigio","Salamina GR","Pyrgos"]
     },{
       "name": "Western Macedonia ",
       "cities": ["Grevena","Florina","Kozani","Kastoria","Ptolemaida"]
@@ -60,37 +60,37 @@
     },
     {
       "name": "Κεντρική Μακεδονία",
-      "cities": ["Θεσσαλονίκη","Χαλκιδική","Γιαννιτσά","Κατερίνη","Κιλκίς","Αλεξάνδρεια","Σέρρες", "Βέροια"]
+      "cities": ["Θεσσαλονίκη","Χαλκιδική","Γιαννιτσά","Κατερίνη","Κιλκίς","Αλεξάνδρεια","Σέρρες", "Βέροια", "Έδεσσα", "Νάουσα", "Λιβαδιά"]
     },
     {
       "name": "Ανατολική Μακεδονία και Θράκη",
-      "cities": ["Αλεξανδρούπολη","Δράμα","Καβάλα","Κομοτηνή","Ξάνθη"]
+      "cities": ["Αλεξανδρούπολη","Δράμα","Καβάλα","Κομοτηνή","Ξάνθη","Ορεστιάδα"]
     },
     {
       "name": "Κρήτη",
-      "cities": ["Ηράκλειο","Χανιά","Ρέθυμνο"]
+      "cities": ["Ηράκλειο","Χανιά","Ρέθυμνο","Άγιος Νικόλαος","Σιτιά"]
     },
     {
       "name": "Ήπειρος ",
-      "cities": ["Ιωάννινα","Πρέβεζα"]
+      "cities": ["Ιωάννινα","Πρέβεζα","Άρτα","Ηγουμενίτσα"]
     },{
       "name": "Ιόνια νησιά ",
-      "cities": ["Κέρκυρα"]
+      "cities": ["Κέρκυρα","Αργοστόλι"]
     },{
       "name": "Βόρειο Αιγαίο",
-      "cities": ["Μυτιλήνη"]
+      "cities": ["Μυτιλήνη","Χίος"]
     },{
       "name": " Πελοπόννησος",
-      "cities": ["Καλαμάτα","Τρίπολη","Άργος","Σπάρτη","Κόρινθος","Ναύπλιο"]
+      "cities": ["Καλαμάτα","Τρίπολη","Άργος","Σπάρτη","Κόρινθος","Ναύπλιο","Λουτράκι"]
     },{
       "name": "Νότιο Αιγαίο",
-      "cities": ["Ρόδος"]
+      "cities": ["Ρόδος","Κως","Κάλυμνος","Ερμούπολη"]
     },{
       "name": "Θεσσαλία",
       "cities": ["Λάρισα","Βόλος","Καρδίτσα","Τρίκαλα","Τύρναβος"]
     },{
       "name": "Δυτική Ελλάδα ",
-      "cities": ["Πάτρα","Αγρίνιο","Αίγιο","Σαλαμίνα"]
+      "cities": ["Πάτρα","Αγρίνιο","Αίγιο","Σαλαμίνα","Πύργος"]
     },{
       "name": "Δυτική Μακεδονία",
       "cities": ["Γρεβενά","Φλώρινα","Κοζάνη","Καστοριά","Πτολεμαΐδα"]
