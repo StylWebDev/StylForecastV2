@@ -6,7 +6,9 @@ import {Icon} from "@iconify/vue";
 import DailyCharts from "@/components/weather/daily/DailyCharts.vue";
 
 const configureStore = useConfigureStore();
-const props = defineProps({
+const {themes,icons,trans} = useConfigureStore();
+
+defineProps({
   weather: {
     type: Object,
     required: true,
@@ -21,14 +23,14 @@ const props = defineProps({
 </script>
 
 <template>
-  <StracturesFlex :column="true"  class="mt-16 mx-3 fadeIn py-3" :class="configureStore.themes[configureStore.themeNum].frame">
+  <StracturesFlex :column="true"  class="mt-16 mx-3 fadeIn py-3" :class="themes[configureStore.themeNum].frame">
 
     <StracturesFlex  class="flex-col mt-2 xl:space-x-3"  justify="center" items="center"
-                     :class="(parseInt(day)===0 && (new Date().getHours()) >= 12) ? `xl:flex-col xl:w-[1000px] 2xl:w-[1200px] min-[2000px]:w-[1600px]`: ` xl:flex-row`">
+                     :class="(parseInt(day.toString())===0 && (new Date().getHours()) >= 12) ? `xl:flex-col xl:w-[1000px] 2xl:w-[1200px] min-[2000px]:w-[1600px]`: ` xl:flex-row`">
 
       <StracturesFlex :column="true" justify="center" items="center"  class=" md:w-[85%]  lg:w-auto pb-3" >
 
-        <h1 :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]"
+        <h1 :class="[themes[configureStore.themeNum].about,trans]"
             class="cursor-default text-2xl text-center mt-3 mb-5 align-middle capitalize sm:text-xl md:text-2xl lg:text-3xl min-[1920px]:text-3xl max:sm:text-lg">
            {{$t(`forecastDetails.concise`) }}
         </h1>
@@ -37,17 +39,32 @@ const props = defineProps({
              :class="(day===0 && (new Date().getHours()) >=21) ? `justify-center` : `justify-start`">
 
           <TransitionGroup enter-from-class="opacity-0 scale-0" appear appear-active-class="transition-all ease-in duration-1000">
-            <StracturesFlex v-for="(value,index) in  (day!=0) ? weather.days[day].data.hours : weather.days[day].data.hours.filter(val=> ((new Date().getHours()) >=21) ? parseInt(val.datetime.slice(0,3)) === 21 : parseInt(val.datetime.slice(0,3)) > (new Date().getHours()) )" :key="index"
+            <StracturesFlex v-for="(value,index) in  (day!==0)
+                                                      ? weather.days[day].data.hours
+                                                      : weather.days[day].data.hours.filter(val=> ((new Date().getHours()) >=21) ? parseInt(val.datetime.slice(0,3)) === 21 : parseInt(val.datetime.slice(0,3)) > (new Date().getHours()) )"
+                            :key="index"
                             :class="[(value.conditions.length > 20) ? `sm:pr-4` : null]"
                             :column="true" items="center" justify="center"
                             class=" max-xl:mt-6 max-md:py-5 max-md:px-3 max-md:ml-2  max-md:border-2 max-md:border-white max-md:border-opacity-40 max-md:rounded-2xl max-md:bg-neutral-900 max-md:bg-opacity-20">
 
-              <h1 :class="configureStore.themes[configureStore.themeNum].about">{{value.datetime.slice(0,5)}} <span>{{(parseInt(value.datetime.slice(0,2))>=13) ? $t('time.pm') : $t('time.am')}}</span></h1>
+              <h1 :class="themes[configureStore.themeNum].about">
+                {{value.datetime.slice(0,5)}}
+                <span>
+                  {{(parseInt(value.datetime.slice(0,2))>=13) ? $t('time.pm') : $t('time.am')}}
+                </span>
+              </h1>
 
-              <hr width="100%" class="max-md:hidden ">
+              <hr class="max-md:hidden w-full">
+
               <StracturesFlex class="md:flex-row max-md:flex-col" justify="center" items="center">
+
                 <StracturesFlex justify="center" class="space-x-2 items-center max-sm:text-center" :row="true">
-                  <div><Icon class="inline max-sm:hidden min-[1921px]:hidden" width="100" :icon="configureStore.icons[value.icon]"/><Icon class="hidden max-sm:inline" width="70" :icon="configureStore.icons[value.icon]"/> <Icon class="inline max-[1920px]:hidden" width="130" :icon="configureStore.icons[value.icon]"/></div>
+                  <div>
+                    <Icon class="inline max-sm:hidden min-[1921px]:hidden" width="100" :icon="icons[value.icon]"/>
+                    <Icon class="hidden max-sm:inline" width="70" :icon="icons[value.icon]"/>
+                    <Icon class="inline max-[1920px]:hidden" width="130" :icon="icons[value.icon]"/>
+                  </div>
+
                   <StracturesFlex :column="true" class="text-2xl min-[1920px]:text-3xl align-middle ">
                     <hgroup>
                       <h3 class="font-semibold">{{value.temp}}°C</h3>
@@ -55,13 +72,22 @@ const props = defineProps({
                     </hgroup>
                   </StracturesFlex>
                 </StracturesFlex>
+
                 <StracturesFlex :row="true" :wrap="false" justify="center" items="center" class="max-sm:text-sm space-x-3">
-                  <Icon width="40" :icon="(value.snow>0) ? configureStore.icons.snow :configureStore.icons.percip"/><p>{{Math.round(value.precipprob)}}<span class="text-xs">%</span></p>
-                  <Icon width="40" :icon="`meteocons:wind-beaufort-${Math.floor(value.windspeed/5)}-fill`"/><p>{{value.windspeed}}<span class="text-xs">km/h</span></p>
+                  <Icon width="40" :icon="(value.snow>0) ? icons.snow : icons.percip"/><p>{{Math.round(value.precipprob)}}<span class="text-xs">%</span></p>
+                  <Icon width="40" :icon="`meteocons:wind-beaufort-${Math.floor(value.windspeed/5)}-fill`"/>
+                  <p>
+                    {{value.windspeed}}
+                    <span class="text-xs">km/h</span>
+                  </p>
                 </StracturesFlex>
+
                 <StracturesFlex :row="true" :wrap="false" justify="center" items="center" class="max-sm:text-sm">
-                  <Icon width="40" :icon="(value.cloudcover >= 30) ? configureStore.icons.preassurehot : configureStore.icons.preassurelow"/>{{value.pressure}}<span class="text-xs">hPa</span>
-                  <Icon width="40" :icon="configureStore.icons.humidity"/>{{value.humidity}}<span class="text-xs">%</span>
+                  <Icon width="40" :icon="(value.cloudcover >= 30) ? icons.preassurehot : icons.preassurelow"/>
+                  {{value.pressure}}
+                  <span class="text-xs">hPa</span>
+                  <Icon width="40" :icon="icons.humidity"/>{{value.humidity}}
+                  <span class="text-xs">%</span>
                 </StracturesFlex>
               </StracturesFlex>
             </StracturesFlex>
@@ -78,12 +104,12 @@ const props = defineProps({
                          :class="(parseInt(day)===0 && (new Date().getHours()) >= 12) ? `xl:flex-row gap-3`: ` xl:flex-col`">
           <StracturesFlex :column="true" items="center" justify="center" >
             <h4>{{$t('map.temp')}}</h4>
-            <iframe  height="450" class=" scroll mt-4 rounded-md  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=temp&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  frameborder="0"/>
+            <iframe  height="450" class=" scroll mt-4 rounded-md  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=temp&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  />
           </StracturesFlex>
 
           <StracturesFlex :column="true" items="center" justify="center" >
             <h4>{{$t('map.precip')}}</h4>
-            <iframe height="450" class=" mt-4 rounded-md  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" frameborder="0"/>
+            <iframe height="450" class=" mt-4 rounded-md  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" />
           </StracturesFlex>
 
         </StracturesFlex>

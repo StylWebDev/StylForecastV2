@@ -10,6 +10,7 @@ const routes = ref([
 import {useConfigureStore} from "@/stores/configure.js";
 import {onMounted, ref, watch} from "vue";
 const configureStore = useConfigureStore()
+const {themes,trans} = useConfigureStore();
 
 const mode = ref(false)
 const theme = window.localStorage.getItem("theme");
@@ -26,7 +27,7 @@ onMounted(()=> {
   configureStore.open = false;
 })
 
-watch(mode, (newVal)=>{
+watch(mode, ()=>{
   (configureStore.themeNum===1) ? configureStore.themeNum=0 : configureStore.themeNum=1;
   (configureStore.themeNum===1) ? window.localStorage.setItem(`theme`,`light`) : window.localStorage.setItem(`theme`,`dark`);
   document.body.style.backgroundImage = `${configureStore.themes[configureStore.themeNum].backgroundColor}`;
@@ -40,14 +41,14 @@ watch(mode, (newVal)=>{
                 :active-class="(configureStore.themeNum === 0)
                                   ? `text-yellow-400 after:hidden text-3xl bg-eggplant-500`
                                   : `bg-weather-800 brightness-150 text-yellow-400 after:hidden text-3xl`"
-                :class="[(configureStore.themeNum === 0) ? `hover:bg-eggplant-500` : `hover:bg-weather-800 brightness-125`,configureStore.themes[configureStore.themeNum].text_trans, configureStore.trans]"
+                :class="[(configureStore.themeNum === 0) ? `hover:bg-eggplant-500` : `hover:bg-weather-800 brightness-125`,themes[configureStore.themeNum].text_trans, trans]"
                 class="text-white w-[100%] text-center py-4 text-2xl font-semibold
                        max-md:after:hidden after:bg-yellow-400 after:relative after:block after:left-0 after:w-[0%] hover:after:w-[100%] after:h-0.5 after:duration-500 after:ease-in after:mt-0.5"
                 :to="value.link">
       {{$t(`nav.link${index+1}`)}}</RouterLink>
     <div class="mt-2 py-0.5 active:outline-0 focus:outline-0 hidden max-sm:block">
-      <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,configureStore.trans]" :title="$t(`nav.theme`)" class="hover:scale-110 hover:brightness-150">
-        <Icon width="30" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" icon="line-md:light-dark-loop"/></button>
+      <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,trans]" :title="$t(`nav.theme`)" class="hover:scale-110 hover:brightness-150">
+        <Icon width="30" :class="[themes[configureStore.themeNum].about,trans]" icon="line-md:light-dark-loop"/></button>
     </div>
   </StracturesFlex>
 </template>

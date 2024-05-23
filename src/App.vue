@@ -19,12 +19,14 @@ const route = useRoute()
                                   : `h-auto`"
   >
     <Header class=" sticky top-0 z-40" />
+
     <Offcanvas  :class="[(configureStore.open) ? `opacity-100 h-screen` : `opacity-0 h-0`]"
                 class=" top-[63px] fixed w-screen right-0 transition-opacity duration-1000  ease-in-out z-50"
-                @click="configureStore.selectedCity = `Find Your Area`"/>
+                @click="configureStore.selectedCity = $t(`daily.search`)"/>
+
     <div class="z-20 bg-transparent pt-1 flex-grow"
          @click="[
-             configureStore.selectedCity = `Find Your Area`,
+             configureStore.selectedCity = $t(`daily.search`),
              configureStore.showRegions=false,
              configureStore.active=false
              ]"
@@ -40,7 +42,9 @@ const route = useRoute()
         </template>
       </Suspense>
     </div>
-    <Footer :class="themes[configureStore.themeNum].headerFooterBgColor" class="z-40 py-2"/>
+    <Footer :class="themes[configureStore.themeNum].headerFooterBgColor"
+            @click="configureStore.selectedCity = $t(`daily.search`)"
+            class="z-50 py-2"/>
   </StracturesFlex>
 </template>
 

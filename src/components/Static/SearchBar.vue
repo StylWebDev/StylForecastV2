@@ -8,7 +8,6 @@ import {useI18n} from "vue-i18n";
 const {t} = useI18n();
 
 let query = ref('')
-const pushCity = ref('');
 const configureStore = useConfigureStore()
 const selected = ref(t('daily.search'))
 
@@ -22,25 +21,11 @@ let filteredCities = computed(() =>
 )
 
 const target = ref(null)
-
-watch(selected, (newVal) => {
-  if (newVal ===``) return ;
-  else {
-    pushCity.value = cities.filter(city => {
-      return (city.en.toLowerCase().includes(newVal.toLowerCase()) || city.gr.toLowerCase().includes(newVal.toLowerCase()))
-    }
-    );
-    if (pushCity.value.length > 0) {
-      location.replace(`/weather/${pushCity.value[0].en}`);
-    }
-  }
-})
-
 </script>
 
 <template>
-    <div class="top-16 w-64 max-sm:w-40 max-xl:w-auto max-[300px]:w-28" @click="(selected===$t(`daily.search`)) ? selected=`` : null" >
-      <Combobox v-model="selected" ref="target">
+    <div class="top-16 w-64 max-sm:w-40 max-xl:w-auto max-[300px]:w-28" @click="(configureStore.selectedCity===$t(`daily.search`)) ? configureStore.selectedCity=`` : null" >
+      <Combobox v-model="configureStore.selectedCity" ref="target">
         <div class="relative mt-1">
           <div
               class="relative w-full cursor-default overflow-hidden rounded-full bg-white text-left shadow-md sm:text-sm"

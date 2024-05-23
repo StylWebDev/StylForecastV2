@@ -1,12 +1,10 @@
 <script setup>
 import StracturesFlex from "../StracturesFlex.vue";
-import {useConfigureStore} from "../../stores/configure.js";import {Icon} from "@iconify/vue";
+import {useConfigureStore} from "@/stores/configure.js";
 import Languages from "@/components/NavBar/Languages.vue";
 import Tabs from "@/components/NavBar/Menu/Tabs.vue";
+
 const configureStore = useConfigureStore()
-
-
-
 </script>
 
 <template>

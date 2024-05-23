@@ -1,5 +1,5 @@
 <script setup>
-import {ref, watchEffect} from "vue";import {Icon} from "@iconify/vue";
+import {ref} from "vue";import {Icon} from "@iconify/vue";
 import StracturesFlex from "../StracturesFlex.vue";
 import {useConfigureStore} from "@/stores/configure.js";
 import SearchBar from "@/components/Static/SearchBar.vue";
@@ -9,7 +9,7 @@ import MenuButton from "@/components/NavBar/Header/MenuButton.vue";
 import Regions from "@/components/NavBar/Header/Regions.vue";
 
 const nav = ref('text-white rounded-end ');
-const {themes} = useConfigureStore();
+const {themes,trans} = useConfigureStore();
 const configureStore = useConfigureStore();
 
 
@@ -21,7 +21,7 @@ const configureStore = useConfigureStore();
         class="relative grid grid-cols-3 max-sm:grid-cols-2 justify-items-center items-start z-40"
         :class="themes[configureStore.themeNum].headerFooterBgColor"
         @click="[configureStore.showRegions=false,configureStore.active=false]">
-      <RouterLink to="/" class="text-2xl max-sm:text-center max-sm:text-lg max-[300px]:text-base font-bold hover:brightness-125 pt-2" :class="[themes[configureStore.themeNum].about,configureStore.trans]" >
+      <RouterLink to="/" class="text-2xl max-sm:text-center max-sm:text-lg max-[300px]:text-base font-bold hover:brightness-125 pt-2" :class="[themes[configureStore.themeNum].about,trans]" >
         <Icon class="inline cursor-pointer" width="55" icon="ri:meteor-fill"/>
         <span class="align-middle max-[300px]:">StylForecast</span>
       </RouterLink>
@@ -40,8 +40,8 @@ const configureStore = useConfigureStore();
     <div class="relative text-center py-1 z-30 border-b border-neutral-100/50 shadow-lg"
          :class="themes[configureStore.themeNum].menuBgColor"
     >
-        <button type="button" :class="[(configureStore.active) ? themes[configureStore.themeNum].about : `text-white`, configureStore.trans]"
-                class="text-start font-bold text-lg hover:text-yellow-500 brightness-150"
+        <button type="button" :class="[(configureStore.active) ? themes[configureStore.themeNum].about : `text-white`, trans]"
+                class="text-start font-bold max-xl:text-lg text-xl hover:text-yellow-500 brightness-150"
                 @click="[
                     (!configureStore.open)
                         ? configureStore.showRegions=!configureStore.showRegions
@@ -52,7 +52,7 @@ const configureStore = useConfigureStore();
         >
 
           {{($i18n.locale === `el`) ? 'Ελλάδα' : `Greece`}}
-          <Icon class="inline size-5 " :class="[(configureStore.active) ? `rotate-90`: `rotate-0`,configureStore.trans]"  icon="material-symbols:arrow-right"/>
+          <Icon class="inline size-5 " :class="[(configureStore.active) ? `rotate-90`: `rotate-0`,trans]"  icon="material-symbols:arrow-right"/>
         </button>
     </div>
     <Transition enter-from-class="-translate-y-full" enter-active-class="transition-all duration-1000 ease-in" leave-to-class="-translate-y-full" leave-active-class="transition-all duration-1000 ease-out">

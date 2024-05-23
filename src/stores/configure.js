@@ -1,7 +1,11 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {ref, watch} from "vue";
+import {useI18n} from "vue-i18n";
+import cities from "@/composables/cities.json";
 
 export const useConfigureStore = defineStore('configure', () => {
+    const {t} = useI18n()
+
     const themes = ref([{
         text_trans: "text-neutral-100 hover:text-yellow-400",
         icon: "mdi:star-shooting",
@@ -14,7 +18,8 @@ export const useConfigureStore = defineStore('configure', () => {
         charts: "md:w-[380px] lg:w-[380px] sm:w-[400px] xl:w-[350px] 2xl:w-[400px] max-sm:w-[330px] max-[350px]:w-[260px] min-[2000px]:w-[450px]",
         headerFooterBgColor: `bg-eggplant-950`,
         menuBgColor: `bg-eggplant-500 `,
-        regionsHoverBgColor: `hover:bg-eggplant-100`
+        regionsHoverBgColor: `hover:bg-eggplant-100`,
+        detailsBtn: `bg-pink-300 text-neutral-900`
     },
         {
             text_trans: "text-neutral-100 hover:text-yellow-400",
@@ -29,6 +34,7 @@ export const useConfigureStore = defineStore('configure', () => {
             headerFooterBgColor: `bg-weather-950`,
             menuBgColor: `bg-weather-800 brightness-75`,
             regionsHoverBgColor: `hover:bg-weather-500`,
+            detailsBtn: `bg-weather-950 text-white`
         }
     ]);
 
@@ -85,12 +91,25 @@ export const useConfigureStore = defineStore('configure', () => {
 
     const themeNum = ref(1)
 
-    const open = ref(1);
+    const open = ref(false);
 
-    const selectedCity = ref(`Find Your Area`)
+    const selectedCity = ref(t(`daily.search`))
 
     const active = ref(false)
 
+    const pushCity = ref('');
+
+    watch(selectedCity, (newVal) => {
+        if (newVal !==``)  {
+            pushCity.value = cities.filter(city => {
+                    return (city.en.toLowerCase().includes(newVal.toLowerCase()) || city.gr.toLowerCase().includes(newVal.toLowerCase()))
+                }
+            );
+            if (pushCity.value.length > 0) {
+                location.replace(`/weather/${pushCity.value[0].en}`);
+            }
+        }
+    })
 
     return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active}
 })

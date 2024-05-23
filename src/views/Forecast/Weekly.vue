@@ -8,6 +8,9 @@ import ProvidersWeeklyWeather from "@/components/weather/weekly/ProvidersWeeklyW
 
 const {getWeather} = useWeather();
 const configureStore = useConfigureStore();
+const {themes,trans} = useConfigureStore();
+
+
 const route = useRoute();
 const defaultWeather = ref(await getWeather(route.params.city, "default"))
 const weather = ref(await getWeather(route.params.city, "weekly"));
@@ -19,11 +22,12 @@ const weeklyWeather = computed( () => {
 
 <template>
   <div>
-    <div v-if="!weather.hasOwnProperty(`Error`)"  class="font-bold max-md:pb-16 z-10 fadeIn" :class="configureStore.themes[configureStore.themeNum].text" :column="true" items="center">
-
+    <div v-if="!weather.hasOwnProperty(`Error`)"  class="font-bold max-md:pb-16 z-10 fadeIn" :class="themes[configureStore.themeNum].text" :column="true" items="center">
       <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
-        <p class="mt-3 font-semibold text-2xl text-center " :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t(`days.day${new Date(weather.days[0].data.datetime).getDay()}`)}} {{new Date( weather.days[0].data.datetime).getUTCDate()}}/{{new Date( weather.days[0].data.datetime).getMonth() + 1}}/{{new Date( weather.days[0].data.datetime).getFullYear()}}</p>
+        <p class="mt-3 font-semibold text-2xl text-center " :class="[themes[configureStore.themeNum].about,trans]">
+          {{$t(`days.day${new Date(weather.days[0].data.datetime).getDay()}`)}} {{new Date( weather.days[0].data.datetime).getUTCDate()}}/{{new Date( weather.days[0].data.datetime).getMonth() + 1}}/{{new Date( weather.days[0].data.datetime).getFullYear()}}
+        </p>
       </div>
 
       <CurrentAnalysisInSummary :weather="weather" :city="route.params.city"/>

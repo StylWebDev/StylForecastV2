@@ -3,12 +3,13 @@ import {useConfigureStore} from "@/stores/configure.js";
 import {Icon} from "@iconify/vue";
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 const configureStore = useConfigureStore()
+const {themes,icons,trans} = useConfigureStore();
 </script>
 
 <template>
   <div class="absolute z-50">
     <Menu>
-      <MenuButton :class="[configureStore.themes[configureStore.themeNum].about ,configureStore.trans]" class="hover:brightness-150 active:brightness-200 hover:scale-110 uppercase">
+      <MenuButton :class="[themes[configureStore.themeNum].about, trans]" class="hover:brightness-150 active:brightness-200 hover:scale-110 uppercase">
         <Icon width="25px" class="rounded-2xl inline" icon="solar:earth-bold-duotone"/>
         {{$i18n.locale}}
       </MenuButton>
@@ -17,9 +18,9 @@ const configureStore = useConfigureStore()
             <button type="button"
                 :title="(locale=== `en`) ? `English` : `Ελληνικα`"
                 @click="$i18n.locale=locale"
-                :class="configureStore.trans"
+                :class="trans"
                 class="block hover:brightness-150">
-              <Icon class="inline" width="35px" :icon="configureStore.icons[`${locale}`]"/> {{(locale=== `en`) ? `English` : `Ελληνικα`}}
+              <Icon class="inline" width="35px" :icon="icons[`${locale}`]"/> {{(locale=== `en`) ? `English` : `Ελληνικα`}}
             </button>
           </MenuItem>
       </MenuItems>

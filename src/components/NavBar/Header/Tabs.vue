@@ -7,7 +7,7 @@ import {useConfigureStore} from "@/stores/configure.js";
 import MenuButton from "@/components/NavBar/Header/MenuButton.vue";
 import {onMounted, ref, watch} from "vue";
 const configureStore = useConfigureStore()
-
+const {themes,trans} = useConfigureStore();
 const theme = window.localStorage.getItem("theme");
 const mode = ref(false)
 const darkThemeMq = ref(window.matchMedia("(prefers-color-scheme: dark)"));
@@ -23,7 +23,7 @@ onMounted(()=> {
   configureStore.open = false;
 })
 
-watch(mode, (newVal)=>{
+watch(mode, ()=>{
   (configureStore.themeNum===1) ? configureStore.themeNum=0 : configureStore.themeNum=1;
   (configureStore.themeNum===1) ? window.localStorage.setItem(`theme`,`light`) : window.localStorage.setItem(`theme`,`dark`);
   document.body.style.backgroundImage = `${configureStore.themes[configureStore.themeNum].backgroundColor}`;
@@ -38,8 +38,8 @@ watch(mode, (newVal)=>{
           <MenuButton/>
         </Tab>
         <Tab class="mt-2 py-0.5 active:outline-0 focus:outline-0">
-          <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,configureStore.trans]" :title="$t(`nav.theme`)" class="hover:scale-110 hover:brightness-150">
-            <Icon width="30" :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" icon="line-md:light-dark-loop"/></button>
+          <button type="button" @click="mode=!mode" :class="[(configureStore.themeNum===0) ? `rotate-0` : `rotate-180` ,trans]" :title="$t(`nav.theme`)" class="hover:scale-110 hover:brightness-150">
+            <Icon width="30" :class="[themes[configureStore.themeNum].about,trans]" icon="line-md:light-dark-loop"/></button>
         </Tab>
       </StracturesFlex>
     </TabList>

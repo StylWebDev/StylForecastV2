@@ -12,6 +12,7 @@ const route = useRoute();
 const day = ref(route.params.days);
 const windowHeight = ref(window.innerHeight);
 const configureStore = useConfigureStore();
+const {themes,trans} = useConfigureStore();
 
 const {getWeather} = useWeather();
 const weather = ref(await getWeather(route.params.city, "daily"));
@@ -28,16 +29,18 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
 
 <template>
   <div>
-    <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="configureStore.themes[configureStore.themeNum].text" class=" font-bold max-md:pb-16" :column="true" items="center">
+    <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="themes[configureStore.themeNum].text" class=" font-bold max-md:pb-16" :column="true" items="center">
 
       <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
-        <p class="mt-3 font-semibold text-2xl " :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]">{{$t(`days.day${new Date(weather.days[day].data.datetime).getDay()}`)}} {{new Date( weather.days[day].data.datetime).getUTCDate()}}/{{new Date( weather.days[day].data.datetime).getMonth() + 1}}/{{new Date( weather.days[day].data.datetime).getFullYear()}}</p>
+        <p class="mt-3 font-semibold text-2xl " :class="[themes[configureStore.themeNum].about,trans]">
+          {{$t(`days.day${new Date(weather.days[day].data.datetime).getDay()}`)}} {{new Date( weather.days[day].data.datetime).getUTCDate()}}/{{new Date( weather.days[day].data.datetime).getMonth() + 1}}/{{new Date( weather.days[day].data.datetime).getFullYear()}}
+        </p>
       </div>
 
-      <DailyAnalysisInSummary :windowHeight="windowHeight" :day="parseInt(day)" :weather="weather"/>
+      <DailyAnalysisInSummary :windowHeight="windowHeight" :day="parseInt(day.toString())" :weather="weather"/>
 
-      <PerTheeHoursAnalysis :day="parseInt(day)" :weather="weather" class="mb-10"/>
+      <PerTheeHoursAnalysis :day="parseInt(day.toString())" :weather="weather" class="mb-10"/>
 
     </StracturesFlex>
     <Error v-show="configureStore.open===false" v-if="weather!=null && weather.hasOwnProperty(`Error`)" />
