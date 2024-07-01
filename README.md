@@ -1,4 +1,4 @@
-# ![StylForecast_Icon](https://api.iconify.design/ri:meteor-fill.svg?color=%2322ce2d&width=35) StylForecast:
+# ![StylForecast_Icon](https://api.iconify.design/game-icons:burning-meteor.svg?color=%23d92400&width=35) StylForecast:
 
 An interactive web application to provide weather forecast for 42 Greek cities.
 
