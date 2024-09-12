@@ -32,7 +32,7 @@ defineProps({
       <StracturesFlex :row="true" items="center" class="max-sm:text-sm" :wrap="true">
         <p><Icon width="40" class="inline" :icon="`meteocons:wind-beaufort-${Math.floor( weather.currentConditions.windspeed/5)}-fill`"/> {{ weather.currentConditions.windspeed}}Km/h</p>
         <p><Icon width="40" class="inline" :icon="configureStore.icons.windsock"/>{{ weather.currentConditions.windgust}}Km/h</p>
-        <button class="block my-2 px-4 rounded-3xl hover:brightness-150 font-semibold min-[300px]:text-lg max-[300px]:ml-0 max-sm:ml-5 ml-3" :class="[themes[configureStore.themeNum].detailsBtn,trans]" type="button"><router-link :to="`/weather/${city}/0`">{{$t(`daily.details`)}}</router-link></button>
+        <button class="block my-2 hover:brightness-150 font-semibold min-[300px]:text-lg max-[300px]:ml-0 max-sm:ml-5 ml-3" :class="[configureStore.themes[configureStore.themeNum].viewBtn,configureStore.trans]" type="button"><router-link :to="`/weather/${city}/0`">{{$t(`daily.details`)}}</router-link></button>
       </StracturesFlex>
     </div>
   </StracturesFlex></template>

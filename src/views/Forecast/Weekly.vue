@@ -22,7 +22,7 @@ const weeklyWeather = computed( () => {
 
 <template>
   <div>
-    <div v-if="!weather.hasOwnProperty(`Error`)"  class="font-bold max-md:pb-16 z-10 fadeIn" :class="themes[configureStore.themeNum].text" :column="true" items="center">
+    <div v-if="!weather.hasOwnProperty(`Error`)"  class="font-bold z-10 fadeIn" :class="[themes[configureStore.themeNum].text]">
       <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
         <p class="mt-3 font-semibold text-2xl text-center " :class="[themes[configureStore.themeNum].about,trans]">

@@ -95,8 +95,9 @@ watchEffect(async () => {
                 <Icon width="40" class="inline" :icon="icons.windsock"/>
                 {{ weather.currentConditions.windgust}}Km/h
               </p>
-              <button class="block my-2 px-4 rounded-3xl hover:brightness-150 font-semibold min-[300px]:text-lg max-[300px]:ml-0 max-sm:ml-5 ml-3"
-                      :class="[themes[configureStore.themeNum].detailsBtn,trans]" type="button"
+              <button class="block my-2 hover:brightness-150 font-semibold min-[300px]:text-lg max-[300px]:ml-0 max-sm:ml-5 ml-3"
+                      :class="[configureStore.themes[configureStore.themeNum].viewBtn,configureStore.trans]"
+                      type="button"
               >
                 <RouterLink :to="`/weather/${city}`">
                   {{$t(`daily.details`)}}

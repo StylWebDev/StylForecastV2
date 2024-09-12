@@ -29,13 +29,13 @@ defineProps({
     <StracturesFlex class=" mt-5" :column="true" items="center" justify="center">
       <h4 class="text-center" :class="themes[configureStore.themeNum].about">{{$t('daily.compare')}}:</h4>
       <StracturesFlex class="space-x-2" :row="true" items="center" justify="end" >
-        <button :class="[themes[configureStore.themeNum].detailsBtn,trans]" class=" my-2 px-4 rounded-3xl  hover:brightness-150 block"  type="button"   @click="[count=0, showProvidersWeather=true]">VisualCrossing</button>
-        <button :class="[themes[configureStore.themeNum].detailsBtn,trans]" class=" my-2 px-4 rounded-3xl  hover:brightness-150 block" type="button"  @click="[count=1, showProvidersWeather=true]">OpenMeteo</button>
+        <button :class="[themes[configureStore.themeNum].viewBtn,trans]" class=" my-2 px-4 rounded-3xl  hover:brightness-150 block"  type="button"   @click="[count=0, showProvidersWeather=true]">VisualCrossing</button>
+        <button :class="[themes[configureStore.themeNum].viewBtn,trans]" class=" my-2 px-4 rounded-3xl  hover:brightness-150 block" type="button"  @click="[count=1, showProvidersWeather=true]">OpenMeteo</button>
       </StracturesFlex>
     </StracturesFlex>
 
     <Transition enter-active-class="fadeInCities" leave-active-class="fadeOutCities">
-      <div v-if="showProvidersWeather" class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 grid-flow-row font-semibold mx-1 mb-5 pb-3 lg:mx-10" :class="[themes[configureStore.themeNum].text, themes[configureStore.themeNum].frame]">
+      <div v-if="showProvidersWeather" class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 grid-flow-row font-semibold  pb-10 pb-3 lg:mx-10" :class="[themes[configureStore.themeNum].text, themes[configureStore.themeNum].frame]">
 
       <StracturesFlex :row="true" justify="center" class="max-sm:col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 xl:col-span-4 text-center mt-2 gap-3">
         <div class=" align-middle font-extrabold">
@@ -51,7 +51,7 @@ defineProps({
       </StracturesFlex>
 
       <StracturesFlex v-for="(value,index) in (count === 0) ? providersWeather.visualCrossingData.days : providersWeather.openWeatherData.days " :key="index"
-                      class=" mt-4 max-md:mx-1 md:mx-4 bg-neutral-900 bg-opacity-20 p-4 rounded-3xl"
+                      class=" mt-4 border-y-2 rounded border-neutral-200/40 md:mx-4 bg-neutral-900/40 p-4"
                       :class="[
                           (value.data.conditions.length > 20) ? `sm:pr-4` : null,
                           (index === 0) ? `sm:col-span-2 xl:col-span-4 max-xl:w-auto xl:w-1/2 xl:justify-self-center`: null

@@ -29,7 +29,7 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
 
 <template>
   <div>
-    <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="themes[configureStore.themeNum].text" class=" font-bold max-md:pb-16" :column="true" items="center">
+    <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="themes[configureStore.themeNum].text" class=" font-bold" :column="true" items="center">
 
       <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
@@ -40,7 +40,7 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
 
       <DailyAnalysisInSummary :windowHeight="windowHeight" :day="parseInt(day.toString())" :weather="weather"/>
 
-      <PerTheeHoursAnalysis :day="parseInt(day.toString())" :weather="weather" class="mb-10"/>
+      <PerTheeHoursAnalysis :day="parseInt(day.toString())" :weather="weather" />
 
     </StracturesFlex>
     <Error v-show="configureStore.open===false" v-if="weather!=null && weather.hasOwnProperty(`Error`)" />

@@ -18,12 +18,13 @@ const configureStore = useConfigureStore();
 <template>
   <div class="fadeInNav" :class="nav">
     <div
-        class="relative grid grid-cols-3 max-sm:grid-cols-2 justify-items-center items-start z-40"
+        class="py-2 relative grid grid-cols-3 max-sm:grid-cols-2 justify-items-center items-start z-40"
         :class="themes[configureStore.themeNum].headerFooterBgColor"
         @click="[configureStore.showRegions=false,configureStore.active=false]">
-      <RouterLink to="/" class="text-2xl max-sm:text-center max-sm:text-lg max-[300px]:text-base font-bold hover:brightness-125 pt-2" :class="[themes[configureStore.themeNum].about,trans]" >
-        <Icon class="inline cursor-pointer" width="55" icon="ri:meteor-fill"/>
-        <span class="align-middle max-[300px]:">StylForecast</span>
+      <RouterLink to="/" class="text-2xl max-sm:text-center max-sm:text-lg max-[300px]:text-base font-bold hover:brightness-125 pt-2"
+                  :class="[configureStore.themes[configureStore.themeNum].about,configureStore.trans]" >
+        <Icon class="inline cursor-pointer size-12" icon="ri:meteor-fill"/>
+        <span class="align-middle max-sm:hidden">StylForecast</span>
       </RouterLink>
 
       <SearchBar class="pt-3 z-40 max-sm:hidden" />

@@ -25,6 +25,7 @@ const route = useRoute()
                 @click="configureStore.selectedCity = $t(`daily.search`)"/>
 
     <div class="z-20 bg-transparent pt-1 flex-grow"
+         :class="(route.name===`Contact` || route.name===`About`) ? (configureStore.themeNum===1) ? `max-sm:bg-weather-950` : `max-sm:bg-eggplant-950` : null"
          @click="[
              configureStore.selectedCity = $t(`daily.search`),
              configureStore.showRegions=false,
