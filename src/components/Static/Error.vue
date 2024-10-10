@@ -13,7 +13,7 @@ const {themes,trans} = useConfigureStore();
     <h1 :class="[themes[configureStore.themeNum].about, trans]" class="md:text-5xl max-md:text-3xl font-bold justify-self-start ">{{$t('areaNotFound.title')}}</h1>
     <Icon  width="300px" :class="themes[configureStore.themeNum].about" icon="line-md:map-marker-off-twotone-loop"></Icon>
     <p class="lg:text-3xl md:text-2xl max-2xl:text-lg font-semibold capitalize text-white  " >{{$t('areaNotFound.err')}}</p>
-    <RouterLink to="/" :class="[themes[configureStore.themeNum].btn, trans]" class="capitalize rounded-full border-2 px-3 text-xl bg-neutral-900 bg-opacity-30">{{$t('areaNotFound.back')}}</RouterLink>
+    <RouterLink to="/" :class="[themes[configureStore.themeNum].viewBtn , trans]" class="capitalize border-2 px-3 text-xl">{{$t('areaNotFound.back')}}</RouterLink>
   </StracturesFlex>
 </template>
 

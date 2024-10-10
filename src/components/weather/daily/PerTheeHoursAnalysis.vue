@@ -4,6 +4,7 @@ import StracturesFlex from "@/components/StracturesFlex.vue";
 import {useConfigureStore} from "@/stores/configure.js";
 import {Icon} from "@iconify/vue";
 import DailyCharts from "@/components/weather/daily/DailyCharts.vue";
+import {onMounted, ref} from "vue";
 
 const configureStore = useConfigureStore();
 const {themes,icons,trans} = useConfigureStore();
@@ -20,6 +21,10 @@ defineProps({
   },
 
 });
+
+const showMap = (e) => {
+  location.assign(e)
+}
 </script>
 
 <template>
@@ -102,14 +107,21 @@ defineProps({
 
         <StracturesFlex  items="center" justify="center" class="flex-col md:flex-row max-md:space-y-5 mt-10 md:space-x-3 xl:space-x-0 min-[500px]:mx-5"
                          :class="(parseInt(day)===0 && (new Date().getHours()) >= 12) ? `xl:flex-row gap-3`: ` xl:flex-col`">
-          <StracturesFlex :column="true" items="center" justify="center" >
+          <StracturesFlex :column="true" items="center" justify="center"
+                          class="cursor-pointer"
+                          @click="showMap(`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=satellite&product=satellite&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`)"
+          >
             <h4>{{$t('map.temp')}}</h4>
-            <iframe  height="450" class="border-2 border-white/40  scroll mt-4 rounded-xl max-sm:w-[300px] max-[500px]:w-[400px] max-[400px]:w-[350px] max-[600px]:w-[550px]  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=temp&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  frameborder="0"/>
+            <iframe id="sateFrame"  height="450" class="pointer-events-none border-2 border-white/40  scroll mt-4 rounded-xl max-sm:w-[300px] max-[500px]:w-[400px] max-[400px]:w-[350px] max-[600px]:w-[550px]  md:w-[350px] lg:w-[430px] sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]"
+                     :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=satellite&product=satellite&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`"  frameborder="0"
+            />
           </StracturesFlex>
-
-          <StracturesFlex :column="true" items="center" justify="center" >
+          <StracturesFlex :column="true" items="center" justify="center"
+                          class="cursor-pointer"
+                          @click="showMap(`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`)">
             <h4>{{$t('map.precip')}}</h4>
-            <iframe height="450" class="border-2 border-white/40 mt-4 rounded-xl max-sm:w-[300px] max-[500px]:w-[400px] max-[400px]:w-[350px] max-[600px]:w-[550px]  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]" :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" frameborder="0"/>
+            <iframe height="450" class="pointer-events-none border-2 border-white/40 mt-4 rounded-xl max-sm:w-[300px] max-[500px]:w-[400px] max-[400px]:w-[350px] max-[600px]:w-[550px]  md:w-[330px] lg:w-[430px]  sm:w-[500px] min-[500px]:w-[380px]  xl:w-[450px] 2xl:w-[550px] max-md:w-[300px] min-[2000px]:w-[650px] 2xl:h-[350px] max-[350px]:w-[250px] max-md:h-[250px] md:h-[350px]"
+                    :src="`https://embed.windy.com/embed.html?type=map&location=coordinates&metricRain=default&metricTemp=default&metricWind=default&zoom=9&overlay=rain&product=ecmwf&level=surface&lat=${weather.latitude}&lon=${weather.longitude}&message=true?autoplay=1&controls=0&loop=1`" frameborder="0"/>
           </StracturesFlex>
 
         </StracturesFlex>

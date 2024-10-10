@@ -1,15 +1,14 @@
 <script setup>
-import {ref, computed, watch} from 'vue'
+import {ref, computed} from 'vue'
 import cities from "@/composables/cities.json"
 import {Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, TransitionRoot,} from '@headlessui/vue'
 import {Icon} from "@iconify/vue";
 import {useConfigureStore} from "@/stores/configure.js";
 import {useI18n} from "vue-i18n";
-const {t} = useI18n();
+const {t, locale} = useI18n();
 
 let query = ref('')
 const configureStore = useConfigureStore()
-const selected = ref(t('daily.search'))
 
 let filteredCities = computed(() =>
     (query.value === '')

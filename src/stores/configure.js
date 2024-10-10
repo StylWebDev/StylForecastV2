@@ -4,7 +4,7 @@ import {useI18n} from "vue-i18n";
 import cities from "@/composables/cities.json";
 
 export const useConfigureStore = defineStore('configure', () => {
-    const {t} = useI18n()
+    const {t, locale} = useI18n()
 
     const themes = ref([{
         text_trans: "text-neutral-100 hover:text-yellow-400",
@@ -95,7 +95,7 @@ export const useConfigureStore = defineStore('configure', () => {
 
     const open = ref(false);
 
-    const selectedCity = ref(t(`daily.search`))
+    const selectedCity = ref()
 
     const active = ref(false)
 
@@ -113,5 +113,14 @@ export const useConfigureStore = defineStore('configure', () => {
         }
     })
 
-    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active}
+    const checkLang = () => {
+        if (localStorage.getItem('lang')) locale.value = localStorage.getItem('lang');
+        if ( navigator.language.includes('el')) {
+            locale.value = 'el';
+            localStorage.setItem('lang', 'el');
+        } else localStorage.setItem('lang', 'en')
+        selectedCity.value = t('daily.search')
+    }
+
+    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang}
 })

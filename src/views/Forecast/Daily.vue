@@ -28,10 +28,10 @@ const onResize = () => {windowHeight.value = window.innerWidth};const isOpen = r
 </script>
 
 <template>
-  <div>
+  <div class="mt-5 sm:mb-5">
     <StracturesFlex v-if="weather!=null && !weather.hasOwnProperty(`Error`)" :class="themes[configureStore.themeNum].text" class=" font-bold" :column="true" items="center">
 
-      <h2 class="cursor-default text-center text-shadow fadeIn mt-5 align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
+      <h2 class="cursor-default text-center text-shadow fadeIn align-middle capitalize sm:text-lg md:text-xl lg:text-2xl min-[1920px]:text-3xl">{{weather.resolvedAddress}}</h2>
       <div class="fadeIn">
         <p class="mt-3 font-semibold text-2xl " :class="[themes[configureStore.themeNum].about,trans]">
           {{$t(`days.day${new Date(weather.days[day].data.datetime).getDay()}`)}} {{new Date( weather.days[day].data.datetime).getUTCDate()}}/{{new Date( weather.days[day].data.datetime).getMonth() + 1}}/{{new Date( weather.days[day].data.datetime).getFullYear()}}
