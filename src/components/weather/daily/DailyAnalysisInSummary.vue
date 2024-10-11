@@ -52,9 +52,9 @@ defineProps({
           <p class="max-[350px]:text-center">
             <Icon :width="(windowHeight<640 || windowHeight>2100) ? `60` : `40`" class="inline" width="40" :icon="icons.termometer"/>
             <span class="max-[350px]:hidden">{{$t("forecastDetails.feels")}}</span>
-            <span class="max-[350px]:inline min-[350px]:hidden ">{{ $t("forecastDetails.like") }}</span>
-            <span class=" font-normal max-[300px]:text-lg max-[300px]:font-bold">
-              {{(day===0)
+            <span class="max-[350px]:inline min-[350px]:hidden ">{{ $t("forecastDetails.like")}} </span>
+            <span class="  max-[300px]:text-lg max-[300px]:font-bold">
+              {{ (day===0)
                 ?   weather.currentConditions.feelslike
                 :  weather.days[day].data.feelslike}}°C
             </span>
@@ -64,14 +64,14 @@ defineProps({
             <p>
               <Icon :width="(windowHeight<640 || windowHeight>2100) ? `60` : `40`" class="inline max-sm:block" :icon="icons.hot"/>
               {{$t("forecastDetails.max")}}
-              <span class=" text-center font-normal">{{ weather.days[day].data.tempmax}}</span>
+              <span class=" text-center ">{{ weather.days[day].data.tempmax}}</span>
               <span class="text-xs ">°C</span>
             </p>
 
             <p>
               <Icon :width="(windowHeight<640 || windowHeight>2100) ? `60` : `40`" class="inline max-sm:block" :icon="icons.cold"/>
               {{$t("forecastDetails.min")}}
-              <span class=" font-normal">{{ weather.days[day].data.tempmin}}</span>
+              <span class="">{{ weather.days[day].data.tempmin}}</span>
               <span class="text-xs">°C</span>
             </p>
           </StracturesFlex>

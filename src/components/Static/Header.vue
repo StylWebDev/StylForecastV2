@@ -16,7 +16,7 @@ const configureStore = useConfigureStore();
 </script>
 
 <template>
-  <div class="fadeInNav" :class="nav">
+  <div :class="nav">
     <div
         class="py-2 relative grid grid-cols-3 max-sm:grid-cols-2 justify-items-center items-start z-40"
         :class="themes[configureStore.themeNum].headerFooterBgColor"

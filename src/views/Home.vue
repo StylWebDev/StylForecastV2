@@ -20,6 +20,14 @@ watchEffect(async () => {
   weather.value = await getWeather(city.value, "current")
 })
 
+const getLocation = () => {
+  navigator.geolocation.getCurrentPosition(async (position) => {
+    const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`)
+    city.value = (await res.json()).city;
+  })
+
+}
+
 </script>
 
 <template>
@@ -106,6 +114,37 @@ watchEffect(async () => {
             </StracturesFlex>
           </div>
         </StracturesFlex>
+      </StracturesFlex>
+      <StracturesFlex
+          :column="true"
+          items="center"
+          v-else
+          class=" max-sm:mt-2 max-md:mt-5 mt-12 max-md:pb-16 group/location"
+          :class="trans"
+      >
+        <Icon icon="line-md:map-marker-alt-twotone-loop" class="size-28 text-red-600 group-hover/location:brightness-150 " />
+        <hgroup class="text-center">
+          <h2 class="font-extrabold text-2xl"
+              :class="[themes[configureStore.themeNum].text]">
+            {{($i18n.locale === "en") ? "Enable Location" : "Ενεργοποίηση Τοποθεσίας"}}
+          </h2>
+          <p
+              class="font-semibold capitalize"
+              :class="[themes[configureStore.themeNum].about]"
+          >
+            {{($i18n.locale === "en")
+              ? "To provide the current forecast for your area"
+              : "Για εμφάνιση της τρέχουσας πρόγνωσης για την περιοχή σας"}}
+          </p>
+        </hgroup>
+
+        <button
+            @click="getLocation()"
+            type="button"
+            :class="[themes[configureStore.themeNum].viewBtn]"
+            class="py-2 mt-5 font-bold group-hover/location:brightness-150">
+            {{($i18n.locale === "en") ? "Enable Location" : "Ενεργοποίηση Τοποθεσίας"}}
+        </button>
       </StracturesFlex>
     </div>
   </Transition>

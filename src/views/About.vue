@@ -15,21 +15,11 @@ onMounted(()=> {
   },5000)
 })
 
-const provides = ref([
-  {icon:`ri:discount-percent-fill`, info: t('about.purposes4'), label: `Accuracy`},
-  {icon:`fluent:live-20-filled`, info: `Live Weather Forecast`, label: `Real-Time`},
-  {icon:`material-symbols:globe`, info:`Weather Forecast for all cities around the world.`, label: `Global`},
-  {icon:`hugeicons:maps-location-01`, info:`Rain and temperature Maps`, label: `Weather Maps`},
-  {icon:`tabler:clock-24`, info:`24h Current, Weekly and Daily Weather Forecast`, label: `24h Service`},
-  {icon:`material-symbols:sync`, info:`Updated weather forecast and alerts every 3 hours`, label: `99.9 Uptime`},
-  {icon:`carbon:skill-level-advanced`, info:`Precipitation, temperature and UV Statistics`, label: `Statistics`},
-  {icon:`ic:twotone-location-city`, info:`Current Location weather, and information about each city:`, label: `City Info`},
-  {icon: "ic:baseline-history", info: `Previously captured weather data`, label: `Historical`}
-])
+const icones = ref([`ri:discount-percent-fill`,`fluent:live-20-filled`,`material-symbols:globe`,`hugeicons:maps-location-01`,`tabler:clock-24`,`material-symbols:sync`,`carbon:skill-level-advanced`,`ic:twotone-location-city`,"ic:baseline-history"])
 </script>
 
 <template>
-  <div class="sm:mt-14 fadeIn">
+  <div class=" fadeIn">
     <StracturesFlex :column="true" :class="configureStore.themes[configureStore.themeNum].text"
                     justify="center" items="center" class="gap-y-5 justify-items-center text-center cursor-default py-4 px-4 " >
       <StracturesFlex items="center" class="px-4 sm:px-14 py-4 gap-y-3" :column="true" :class="[configureStore.themes[configureStore.themeNum].frame, configureStore.trans]">
@@ -42,14 +32,15 @@ const provides = ref([
             <Icon icon="ic:twotone-info" class="size-12"/>
           </StracturesFlex>
           <p class="text-lg font-semibold">
-            StylForecast provide users with real-time weather data, Daily and Weekly Forecast, Historical Weather data, and other weather-related data.</p>
+            {{t('about.desc')}}
+          </p>
         </div>
         <h2 :class="[configureStore.themes[configureStore.themeNum].about, configureStore.trans]"
-            class="mt-8 md:text-4xl max-md:text-2xl font-bold self-center">Facilities:</h2>
+            class="mt-8 md:text-4xl max-md:text-2xl font-bold self-center capitalize">{{t('about.features')}} </h2>
         <div>
 
           <Grid columns="1" md-columns="2" xl-columns="3" items="center" justify="center"  class="mt-10 max-sm:items-center gap-y-10">
-            <StracturesFlex v-for="(provide,key) in provides"
+            <StracturesFlex v-for="(item,key) in icones"
                             :column="true"
                             :key="key"
                             justify="center"
@@ -57,11 +48,11 @@ const provides = ref([
                             class="gap-x-2 text-center"
                             :class="{'md:col-span-2 xl:col-span-1': key===8}"
             >
-              <Icon :icon="provide.icon" class="size-12"
+              <Icon :icon="item" class="size-12"
                     :class="[configureStore.themes[configureStore.themeNum].about, configureStore.trans]"/>
               <h2 :class="[configureStore.themes[configureStore.themeNum].about, configureStore.trans]"
-                  class="md:text-4xl max-md:text-2xl font-bold self-center">{{provide.label}}</h2>
-              <p class="text-lg font-semibold">{{provide.info}}</p>
+                  class="md:text-4xl max-md:text-2xl font-bold self-center">{{t(`about.label${key+1}`)}}</h2>
+              <p class="text-lg font-semibold capitalize">{{t(`about.purposes${key+1}`)}}</p>
             </StracturesFlex>
           </Grid>
         </div>

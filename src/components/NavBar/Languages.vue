@@ -17,7 +17,7 @@ const {themes,icons,trans} = useConfigureStore();
           <MenuItem as="a1" v-for="locale in $i18n.availableLocales" class="bg-transparent mt-4 rounded-2xl block text-center  divide-y-2 divide-neutral-50">
             <button type="button"
                 :title="(locale=== `en`) ? `English` : `Ελληνικα`"
-                @click="$i18n.locale=locale"
+                @click="[$i18n.locale=locale, configureStore.setLan()]"
                 :class="trans"
                 class="block hover:brightness-150">
               <Icon class="inline" width="35px" :icon="icons[`${locale}`]"/> {{(locale=== `en`) ? `English` : `Ελληνικα`}}

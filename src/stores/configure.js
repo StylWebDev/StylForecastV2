@@ -114,7 +114,11 @@ export const useConfigureStore = defineStore('configure', () => {
     })
 
     const checkLang = () => {
-        if (localStorage.getItem('lang')) locale.value = localStorage.getItem('lang');
+        if (localStorage.getItem('lang')) {
+            locale.value = localStorage.getItem('lang');
+            selectedCity.value = t('daily.search')
+            return ;
+        }
         if ( navigator.language.includes('el')) {
             locale.value = 'el';
             localStorage.setItem('lang', 'el');
@@ -122,5 +126,10 @@ export const useConfigureStore = defineStore('configure', () => {
         selectedCity.value = t('daily.search')
     }
 
-    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang}
+    const setLan = () => {
+        localStorage.setItem('lang', locale.value);
+        selectedCity.value = t('daily.search')
+    }
+
+    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang, setLan}
 })

@@ -5,14 +5,14 @@ import {useConfigureStore} from "./stores/configure.js";
 import StracturesFlex from "@/components/StracturesFlex.vue";
 import {useRoute} from "vue-router";
 import Footer from "@/components/Static/Footer.vue";
-import {onMounted} from "vue";
+import {onMounted, onUnmounted} from "vue";
 const {themes} = useConfigureStore();
 const configureStore = useConfigureStore();
 const route = useRoute()
 onMounted(() => {
   configureStore.checkLang();
 })
-const lan = navigator.languages
+
 </script>
 
 <template>
