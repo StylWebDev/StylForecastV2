@@ -1,11 +1,15 @@
+//importing functions needed
 import {defineStore} from "pinia";
 import {ref, watch} from "vue";
 import {useI18n} from "vue-i18n";
 import cities from "@/composables/cities.json";
 
+//exporting and defining our pinia store
 export const useConfigureStore = defineStore('configure', () => {
+    //destructing translation property from internationalization object
     const {t, locale} = useI18n()
 
+    //creating themes reactive state
     const themes = ref([{
         text_trans: "text-neutral-100 hover:text-yellow-400",
         icon: "mdi:star-shooting",
@@ -40,12 +44,16 @@ export const useConfigureStore = defineStore('configure', () => {
         }
     ]);
 
+    //creating transition state
     const trans = ref("transition ease-linear duration-300 delay-100");
 
+    //creating a toggle state for regions menu
     const showRegions = ref(false);
 
+    //creating days array
     const daysArr = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
+    //creating icons reactive state
     const  icons = ref({
         "clear-day": "meteocons:clear-day-fill",
         "showers-day": "meteocons:rain-fill",
@@ -89,18 +97,25 @@ export const useConfigureStore = defineStore('configure', () => {
         el: "cif:gr"
     });
 
+    //creating second icons reactive state
     const iconsArr = ref(["meteocons:clear-day-fill","meteocons:cloudy-fill","meteocons:snowflake-fill","meteocons:raindrops-fill","meteocons:thunderstorms-extreme-fill","meteocons:starry-night-fill"]);
 
+    //creating theme toggle state
     const themeNum = ref(1)
 
+    //creating a toggle state for main menu
     const open = ref(false);
 
+    //creating a state for searching cities
     const selectedCity = ref()
 
+    //creating a toggle state for regions menu
     const active = ref(false)
 
+    //creating another state for searching cities in order to change values
     const pushCity = ref('');
 
+    //watching changes selected city state in order to manipulate pushCity state
     watch(selectedCity, (newVal) => {
         if (newVal !==``)  {
             pushCity.value = cities.filter(city => {
@@ -113,6 +128,7 @@ export const useConfigureStore = defineStore('configure', () => {
         }
     })
 
+    //checking preferred language and store it to localStorage
     const checkLang = () => {
         if (localStorage.getItem('lang')) {
             locale.value = localStorage.getItem('lang');
@@ -126,10 +142,12 @@ export const useConfigureStore = defineStore('configure', () => {
         selectedCity.value = t('daily.search')
     }
 
+    //Setting language if user change it manually
     const setLan = () => {
         localStorage.setItem('lang', locale.value);
         selectedCity.value = t('daily.search')
     }
 
+    //returning the values to its store
     return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang, setLan}
 })

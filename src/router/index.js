@@ -1,18 +1,13 @@
+//importing functions in order to create router
 import {createRouter, createWebHistory} from "vue-router";
-import Home from "../views/Home.vue";
-import Forecast from "../views/Forecast/Forecast.vue";
-import Daily from "../views/Forecast/Daily.vue";
-import Not_Found from "../views/Not_Found.vue";
-import About from "../views/About.vue";
-import Contact from "../views/Contact.vue";
-import Weekly from "../views/Forecast/Weekly.vue";
 
+//initializing router paths
 const routes = [
 
     {
         path: '/',
         name: 'Home',
-        component: Home
+        component: () => import('../views/Home.vue'),
     },
     {
       path: '/home',
@@ -21,25 +16,25 @@ const routes = [
     {
         path: '/weather/:city',
         name: 'dailyForecast',
-        component: Forecast,
+        component: () => import('../views/Forecast/Forecast.vue'),
         props: true,
         children: [
             {
             path: "",
             name: "city",
-            component: Weekly,
+                component: () => import('../views/Forecast/Weekly.vue'),
             },
             {
                 path: ":days([0-4])",
                 name: "details",
-                component: Daily,
+                component: () => import('../views/Forecast/Daily.vue'),
             }
         ]
     },
     {
         path: '/about',
         name: 'About',
-        component: About
+        component: () => import('../views/About.vue')
     },
     {
       path: "/info",
@@ -48,7 +43,7 @@ const routes = [
     {
       path: '/contact',
       name: 'Contact',
-      component: Contact
+      component: () => import('../views/Contact.vue'),
     },
     {
       path: '/report',
@@ -57,14 +52,16 @@ const routes = [
     {
         path: '/:catchAll(.*)*',
         name: 'notFound',
-        component: Not_Found
+        component: () => import('../views/Not_Found.vue'),
     }
 ]
 
+//create router
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
     linkActiveClass: 'nav-colors'
 })
 
+//exporting router
 export {router}

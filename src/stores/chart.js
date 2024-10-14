@@ -1,7 +1,9 @@
 import {defineStore} from "pinia";
 import {ref} from "vue";
 
+//exporting and defining our pinia store
 export const useChartStore = defineStore('chart',()=> {
+    //creating temperature chart state
     const tempChart = ref({
         options: {
             chart: {
@@ -42,6 +44,7 @@ export const useChartStore = defineStore('chart',()=> {
             }
         },
     });
+    //creating UV chart state
     const uvChart = ref({
         options: {
             chart: {
@@ -83,6 +86,7 @@ export const useChartStore = defineStore('chart',()=> {
             }
         },
     });
+    //creating rain percip chart state
     const rainChart = ref({
         options: {
             chart: {
@@ -125,5 +129,6 @@ export const useChartStore = defineStore('chart',()=> {
         },
     });
 
+    //returning the values to its store
     return {uvChart,tempChart,rainChart}
 })
