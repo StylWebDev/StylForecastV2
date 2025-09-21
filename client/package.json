@@ -1,0 +1,39 @@
+{
+  "name": "stylforecast",
+  "description": "A web app created to provide weather forecast for 42 Greek cities.",
+  "author": "Konstantinos Stylianou",
+  "keywords": [
+    "Api",
+    "Vue JS",
+    "Tailwinds Css",
+    "Pinia"
+  ],
+  "private": true,
+  "version": "2.1.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@headlessui/vue": "^1.7.23",
+    "@intlify/unplugin-vue-i18n": "^11.0.1",
+    "@tailwindcss/vite": "^4.1.13",
+    "apexcharts": "^5.3.5",
+    "dotenv": "^17.2.2",
+    "pinia": "^3.0.3",
+    "tailwindcss": "^4.1.13",
+    "vue": "^3.5.21",
+    "vue-i18n": "^11.1.12",
+    "vue-router": "^4.5.1",
+    "vue3-apexcharts": "^1.8.0"
+  },
+  "devDependencies": {
+    "@iconify/vue": "^5.0.0",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "autoprefixer": "^10.4.20",
+    "vite": "^7.1.6"
+  }
+}
