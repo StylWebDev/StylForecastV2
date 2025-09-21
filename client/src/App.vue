@@ -5,7 +5,8 @@ import {useConfigureStore} from "./stores/configure.js";
 import StracturesFlex from "@/components/StracturesFlex.vue";
 import {useRoute} from "vue-router";
 import Footer from "@/components/Static/Footer.vue";
-import {onMounted, onUnmounted} from "vue";
+import {onMounted} from "vue";
+import Toast from "@/components/Static/Toast.vue";
 const {themes} = useConfigureStore();
 const configureStore = useConfigureStore();
 const route = useRoute()
@@ -28,7 +29,7 @@ onMounted(() => {
                 class=" max-sm:top-[64px] top-[77px] fixed w-screen right-0 transition-opacity duration-1000  ease-in-out z-50"
                 @click="configureStore.selectedCity = $t(`daily.search`)"/>
 
-    <div class="z-20 bg-transparent pt-1 flex-grow"
+    <StracturesFlex :column="true" class="z-20 mt-[60px] bg-transparent pt-1 flex-grow"
          :class="(route.name===`Contact` || route.name===`About`) ? (configureStore.themeNum===1) ? `max-sm:bg-weather-950` : `max-sm:bg-eggplant-950` : null"
          @click="[
              configureStore.selectedCity = $t(`daily.search`),
@@ -36,6 +37,13 @@ onMounted(() => {
              configureStore.active=false
              ]"
     >
+      <teleport to="#troll">
+        <Transition enter-from-class="scale-0" enter-active-class="transition-all duration-500 ease-in"
+                    leave-to-class="scale-0" leave-active-class="transition-all duration-500 ease-out"
+                    appear appear-active-class="transition-all duration-500 ease-in">
+          <Toast  v-if="configureStore.showToast" :class="themes[configureStore.themeNum].headerFooterBgColor" class="self-center  z-50 text-white"/>
+        </Transition>
+      </teleport>
       <div class="stars4"></div>
       <div class="stars2"></div>
       <Suspense>
@@ -46,7 +54,7 @@ onMounted(() => {
           Loading...
         </template>
       </Suspense>
-    </div>
+    </StracturesFlex>
     <Footer :class="themes[configureStore.themeNum].headerFooterBgColor"
             @click="configureStore.selectedCity = $t(`daily.search`)"
             class="z-50 py-2"/>

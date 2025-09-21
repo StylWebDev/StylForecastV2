@@ -21,7 +21,7 @@
     "desc": "StylForecast provide users with real-time weather data, Daily and Weekly Forecast, Historical Weather data, and other weather-related data.",
     "purposes1": "StylForecast Predictions are 80% accurate",
     "purposes2": "Current Weather Conditions",
-    "purposes3": "Weather Forecast for all cities around the world.",
+    "purposes3": "Weather Forecast for the most crucial Hellenic cities.",
     "purposes4": "Satellite & Temperature Maps",
     "purposes5": "Weekly and 3-hour daily weather forecast",
     "purposes6": "Updated weather forecast and alerts every 3 hours",
@@ -30,7 +30,7 @@
     "purposes9": "Historical Weather Data",
     "label1": "Accuracy",
     "label2": "Real-Time",
-    "label3": "Global",
+    "label3": "Pan-Hellenic",
     "label4": "Weather Maps",
     "label5": "24h Service",
     "label6": "99.9% Uptime Service",
@@ -39,7 +39,7 @@
     "label9": "Historical Data"
   },
   "contact": {
-    "title": "Contact Information",
+    "title": "Contact Form",
     "name": "Name",
     "email": "Email",
     "issue": "Issue",

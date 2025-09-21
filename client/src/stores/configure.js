@@ -148,6 +148,9 @@ export const useConfigureStore = defineStore('configure', () => {
         selectedCity.value = t('daily.search')
     }
 
+    const showToast = ref(false)
+    const toastMsg = ref("")
+
     //returning the values to its store
-    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang, setLan}
+    return { themes, trans,  icons, iconsArr, daysArr,open,themeNum, selectedCity, showRegions, active, checkLang, setLan, showToast, toastMsg }
 })

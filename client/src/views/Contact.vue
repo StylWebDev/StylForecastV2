@@ -8,11 +8,12 @@ const sentMail = () => {
   emailjs.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, form.value, {publicKey:import.meta.env.VITE_EMAIL_KEY})
       .then(
           () => {
-            alert("Mail was sent successfully");
-            location.reload();
+            configureStore.showToast= true;
+            configureStore.toastMsg = "Message Sent Successful"
           },
           (error) => {
-            console.log('Failed to sent message... Please Contact me through stylsbot@gmail.com', error.text);
+            configureStore.showToast= true;
+            configureStore.toastMsg = "503 SMTP Error! Please Contact me through stylsbot@gmail.com"
           },
       );
 };
