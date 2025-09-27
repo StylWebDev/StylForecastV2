@@ -2,8 +2,8 @@
 import {createI18n} from "vue-i18n";
 
 //fetching locale data from StylForecast-Api
-const res1 = await fetch("https://stylforecast-api.onrender.com/en");
-const res2 = await fetch("https://stylforecast-api.onrender.com/el");
+const res1 = await fetch("https://localhost:3032/en");
+const res2 = await fetch("https://localhost:3032/el");
 const en = await res1.json();
 const el = await res2.json();
 
