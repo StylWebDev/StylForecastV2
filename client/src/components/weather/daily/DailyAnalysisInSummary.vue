@@ -94,8 +94,12 @@ defineProps({
             <span class="max-md:inline max-[833px]:hidden">
               {{$t("forecastDetails.chance")}}
             </span>
+            <span class="text-xs">
+              <span class="text-base">
             {{(day===0) ?   weather.currentConditions.precipprob :  weather.days[day].data.precipprob}}
-            <span class="text-xs">%</span>
+
+              </span>
+              %</span>
           </p>
         </StracturesFlex>
 
